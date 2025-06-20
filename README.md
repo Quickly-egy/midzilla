@@ -1,12 +1,106 @@
-# React + Vite
+# 🎮 Midzilla - موقع الألعاب وشحن الألعاب
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+موقع ألعاب حديث وثنائي اللغة (عربي/إنجليزي) مع واجهة جميلة ونظام شحن سريع.
 
-Currently, two official plugins are available:
+## ✨ المميزات
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 🌐 دعم ثنائي اللغة
+- **العربية**: واجهة كاملة باللغة العربية مع دعم RTL
+- **الإنجليزية**: واجهة باللغة الإنجليزية مع دعم LTR
+- تبديل سهل بين اللغات مع حفظ التفضيل
+- تحديث تلقائي لاتجاه الصفحة (RTL/LTR)
 
-## Expanding the ESLint configuration
+### 🎨 نظام الثيم المتقدم
+- **الوضع المضيء**: خلفية بيضاء مع ألوان خضراء
+- **الوضع المظلم**: خلفية سوداء مع ألوان خضراء نيون
+- تبديل سلس بين الأوضاع
+- حفظ تفضيل المستخدم في localStorage
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🚀 مميزات أخرى
+- Loader أنيميشن عند بدء تشغيل الموقع
+- تصميم responsive للهواتف والأجهزة اللوحية
+- أنيميشن وتأثيرات بصرية متقدمة
+- استخدام خطوط Cairo للعربية و Inter للإنجليزية
+
+## 🛠️ التقنيات المستخدمة
+
+- **React 18**: مكتبة JavaScript للواجهات
+- **Vite**: أداة البناء السريعة
+- **CSS3**: مع متغيرات CSS وأنيميشن متقدمة
+- **Context API**: لإدارة الحالة العامة (Theme & Language)
+- **LocalStorage**: لحفظ تفضيلات المستخدم
+- **Lottie React**: لعرض أنيميشن JSON
+
+## 📁 هيكل المشروع
+
+```
+src/
+├── components/
+│   ├── Header.jsx & Header.css     # الهيدر مع نظام اللغة والثيم
+│   ├── MainPage.jsx & MainPage.css # الصفحة الرئيسية
+│   └── Loader.jsx                  # مكون التحميل
+├── contexts/
+│   ├── ThemeContext.jsx           # إدارة الثيم
+│   └── LanguageContext.jsx        # إدارة اللغة والترجمة
+├── pages/
+│   ├── HomePage.jsx & HomePage.css # صفحة البداية
+└── styles/
+    ├── themes.css                 # ألوان ومتغيرات الثيم
+    └── language.css               # أنماط خاصة باللغات
+```
+
+## 🚀 تشغيل المشروع
+
+```bash
+# تثبيت الحزم
+npm install
+
+# تشغيل الخادم المحلي
+npm run dev
+
+# بناء المشروع للإنتاج
+npm run build
+```
+
+## 🌍 دعم اللغات
+
+### العربية (الافتراضية)
+- اتجاه RTL
+- خط Cairo
+- نصوص عربية كاملة
+- تجربة محلية مثالية
+
+### الإنجليزية
+- اتجاه LTR  
+- خط Inter
+- نصوص إنجليزية احترافية
+- تجربة عالمية
+
+## 🎮 الألعاب المدعومة
+
+- **PUBG Mobile**: شحن UC بأفضل الأسعار
+- **Free Fire**: جواهر مجانية وعروض خاصة  
+- **Call of Duty**: CP points بأسعار لا تقاوم
+- **FIFA Mobile**: FIFA Points وعملات اللعبة
+
+## 🔧 التطوير
+
+المشروع يستخدم:
+- Context API للحالة العامة
+- CSS Variables للثيمات
+- Responsive Design
+- Modern JavaScript (ES6+)
+- Semantic HTML
+
+## 📱 التوافق
+
+- ✅ Chrome, Firefox, Safari, Edge
+- ✅ iOS Safari, Chrome Mobile
+- ✅ أندرويد Chrome, Samsung Browser
+- ✅ الأجهزة اللوحية والهواتف
+
+---
+
+**تم تطوير المشروع بواسطة**: Midzilla Team  
+**الإصدار**: 1.0.0  
+**الترخيص**: MIT

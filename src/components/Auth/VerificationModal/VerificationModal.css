@@ -1,0 +1,117 @@
+/* Verification Modal Specific Styles */
+.verification-modal {
+  max-width: 450px;
+}
+
+.verification-form {
+  width: 100%;
+}
+
+/* Verification Inputs */
+.verification-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  direction: ltr; /* Always LTR for numbers */
+}
+
+.verification-input {
+  width: 50px;
+  height: 50px;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  font-family: 'Arial', monospace;
+}
+
+.verification-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+  transform: scale(1.05);
+}
+
+.verification-input.error {
+  border-color: #ef4444;
+}
+
+.verification-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Resend Section */
+.resend-section {
+  text-align: center;
+  margin-top: 24px;
+}
+
+.resend-text {
+  color: var(--text-secondary);
+  font-size: 14px;
+  margin-bottom: 8px;
+  font-family: 'Cairo', 'Arial', sans-serif;
+}
+
+.resend-button {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  font-family: 'Cairo', 'Arial', sans-serif;
+  transition: color 0.3s ease;
+}
+
+.resend-button:hover {
+  color: var(--secondary-color);
+}
+
+.resend-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+
+/* Enhanced Submit Button */
+.verification-form .submit-button {
+  margin-bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .verification-inputs {
+    gap: 8px;
+  }
+  
+  .verification-input {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+  
+  .verification-modal {
+    max-width: 95%;
+  }
+}
+
+@media (max-width: 360px) {
+  .verification-inputs {
+    gap: 6px;
+  }
+  
+  .verification-input {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+} 

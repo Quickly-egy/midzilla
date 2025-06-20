@@ -1,5 +1,5 @@
 import Lottie from 'lottie-react'
-import animationData from '../assets/Animation - 1750342437174.json'
+import animationData from '../../assets/Animation - 1750342437174.json'
 
 const Loader = ({ size = 300, backgroundColor = 'white' }) => {
   return (

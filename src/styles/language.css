@@ -1,0 +1,97 @@
+/* Language-specific styles for Arabic/English bilingual support */
+
+/* Font family adjustments */
+[lang="ar"], .rtl {
+  font-family: 'Cairo', 'Noto Sans Arabic', 'Arial', sans-serif;
+}
+
+[lang="en"], .ltr {
+  font-family: 'Inter', 'Arial', sans-serif;
+}
+
+/* Text alignment based on direction */
+.rtl {
+  text-align: right;
+}
+
+.ltr {
+  text-align: left;
+}
+
+/* Flex direction adjustments */
+.rtl .flex-row-reverse {
+  flex-direction: row-reverse;
+}
+
+.ltr .flex-row {
+  flex-direction: row;
+}
+
+/* Margin and padding adjustments for RTL */
+.rtl .mr-auto {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.ltr .ml-auto {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+/* Grid adjustments */
+.rtl .grid-rtl {
+  direction: rtl;
+}
+
+.ltr .grid-ltr {
+  direction: ltr;
+}
+
+/* Animation adjustments for RTL */
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.rtl .slide-in-rtl {
+  animation: slideInFromRight 0.8s ease-out;
+}
+
+.ltr .slide-in-ltr {
+  animation: slideInFromLeft 0.8s ease-out;
+}
+
+/* Button positioning */
+.rtl .button-group {
+  justify-content: flex-start;
+}
+
+.ltr .button-group {
+  justify-content: flex-start;
+}
+
+/* Navigation adjustments */
+.rtl .nav-list {
+  direction: rtl;
+}
+
+.ltr .nav-list {
+  direction: ltr;
+} 

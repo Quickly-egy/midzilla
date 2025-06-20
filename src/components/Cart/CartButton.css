@@ -1,0 +1,97 @@
+/* Cart Button */
+.cart-button {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-button:hover {
+  background: var(--hover-bg);
+}
+
+/* Cart Icon */
+.cart-icon {
+  position: relative;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Cart Badge */
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: var(--primary-color);
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Arial', sans-serif;
+  box-shadow: 0 2px 6px rgba(76, 175, 80, 0.3);
+  animation: pulse 0.6s ease-in-out;
+}
+
+/* RTL Support */
+.cart-button.rtl .cart-badge {
+  right: auto;
+  left: -8px;
+}
+
+/* Badge Animation */
+@keyframes pulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Active state when cart is open */
+.cart-button.active {
+  background: var(--primary-color);
+  color: white;
+}
+
+.cart-button.active:hover {
+  background: var(--secondary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cart-icon {
+    font-size: 22px;
+  }
+  
+  .cart-badge {
+    font-size: 10px;
+    min-width: 16px;
+    height: 16px;
+    top: -6px;
+    right: -6px;
+  }
+  
+  .cart-button.rtl .cart-badge {
+    right: auto;
+    left: -6px;
+  }
+} 

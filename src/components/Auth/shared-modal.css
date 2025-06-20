@@ -1,0 +1,321 @@
+/* Shared Modal Styles with RTL/LTR Support */
+
+/* Basic RTL/LTR Support for Modal Content */
+.modal-content[dir="rtl"] {
+  text-align: right;
+}
+
+.modal-content[dir="ltr"] {
+  text-align: left;
+}
+
+/* Header RTL/LTR Support */
+.modal-content[dir="rtl"] .modal-header {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.modal-content[dir="ltr"] .modal-header {
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* Modal Header positioning */
+.modal-content .modal-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Modal Title - Always Center */
+.modal-content .modal-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  text-align: center !important;
+  width: calc(100% - 80px); /* Leave space for close button */
+  direction: inherit;
+}
+
+/* Close Button Position */
+.modal-content[dir="rtl"] .close-button {
+  order: 1;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.modal-content[dir="ltr"] .close-button {
+  order: 1;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* Form Labels */
+.modal-content[dir="rtl"] .form-label {
+  text-align: right;
+}
+
+.modal-content[dir="ltr"] .form-label {
+  text-align: left;
+}
+
+/* Form Inputs */
+.modal-content[dir="rtl"] .form-input {
+  text-align: right;
+  direction: rtl;
+}
+
+.modal-content[dir="ltr"] .form-input {
+  text-align: left;
+  direction: ltr;
+}
+
+/* Error Messages */
+.modal-content[dir="rtl"] .error-message {
+  text-align: right;
+  direction: rtl;
+}
+
+.modal-content[dir="ltr"] .error-message {
+  text-align: left;
+  direction: ltr;
+}
+
+/* Form Links */
+.modal-content[dir="rtl"] .form-links {
+  text-align: center;
+  direction: rtl;
+}
+
+.modal-content[dir="ltr"] .form-links {
+  text-align: center;
+  direction: ltr;
+}
+
+/* Form Divider */
+.modal-content[dir="rtl"] .form-divider {
+  direction: rtl;
+}
+
+.modal-content[dir="ltr"] .form-divider {
+  direction: ltr;
+}
+
+/* General Text Elements */
+.modal-content[dir="rtl"] .resend-text,
+.modal-content[dir="rtl"] .info-text,
+.modal-content[dir="rtl"] .description {
+  text-align: right;
+  direction: rtl;
+}
+
+.modal-content[dir="ltr"] .resend-text,
+.modal-content[dir="ltr"] .info-text,
+.modal-content[dir="ltr"] .description {
+  text-align: left;
+  direction: ltr;
+}
+
+/* Buttons RTL/LTR Support */
+.modal-content[dir="rtl"] .submit-button,
+.modal-content[dir="rtl"] .register-button,
+.modal-content[dir="rtl"] .login-button,
+.modal-content[dir="rtl"] .resend-button,
+.modal-content[dir="rtl"] .link-button {
+  direction: rtl;
+}
+
+.modal-content[dir="ltr"] .submit-button,
+.modal-content[dir="ltr"] .register-button,
+.modal-content[dir="ltr"] .login-button,
+.modal-content[dir="ltr"] .resend-button,
+.modal-content[dir="ltr"] .link-button {
+  direction: ltr;
+}
+
+/* This section has been replaced with the new close button positioning above */
+
+/* Form Row RTL/LTR Support */
+.modal-content[dir="rtl"] .form-row {
+  direction: rtl;
+}
+
+.modal-content[dir="ltr"] .form-row {
+  direction: ltr;
+}
+
+/* Select Elements */
+.modal-content[dir="rtl"] select.form-input {
+  text-align: right;
+  direction: rtl;
+}
+
+.modal-content[dir="ltr"] select.form-input {
+  text-align: left;
+  direction: ltr;
+}
+
+.modal-content[dir="rtl"] select.form-input option {
+  direction: rtl;
+  text-align: right;
+}
+
+.modal-content[dir="ltr"] select.form-input option {
+  direction: ltr;
+  text-align: left;
+}
+
+/* Requirements List (for Reset Password) */
+.modal-content[dir="rtl"] .requirements-list {
+  text-align: right;
+  direction: rtl;
+}
+
+.modal-content[dir="ltr"] .requirements-list {
+  text-align: left;
+  direction: ltr;
+}
+
+.modal-content[dir="rtl"] .requirements-list li {
+  text-align: right;
+}
+
+.modal-content[dir="ltr"] .requirements-list li {
+  text-align: left;
+}
+
+/* Verification Inputs Container (keep numbers LTR always) */
+.modal-content .verification-inputs {
+  direction: ltr !important;
+}
+
+.modal-content .verification-input {
+  direction: ltr !important;
+  text-align: center !important;
+}
+
+/* General Text Direction for all text elements */
+.modal-content[dir="rtl"] * {
+  direction: inherit;
+}
+
+.modal-content[dir="ltr"] * {
+  direction: inherit;
+}
+
+/* Ensure text inputs follow the direction */
+.modal-content[dir="rtl"] input[type="text"],
+.modal-content[dir="rtl"] input[type="email"],
+.modal-content[dir="rtl"] input[type="password"],
+.modal-content[dir="rtl"] input[type="tel"],
+.modal-content[dir="rtl"] textarea {
+  text-align: right;
+  direction: rtl;
+}
+
+.modal-content[dir="ltr"] input[type="text"],
+.modal-content[dir="ltr"] input[type="email"],
+.modal-content[dir="ltr"] input[type="password"],
+.modal-content[dir="ltr"] input[type="tel"],
+.modal-content[dir="ltr"] textarea {
+  text-align: left;
+  direction: ltr;
+}
+
+/* Placeholder text direction */
+.modal-content[dir="rtl"] input::placeholder,
+.modal-content[dir="rtl"] textarea::placeholder {
+  text-align: right;
+  direction: rtl;
+}
+
+.modal-content[dir="ltr"] input::placeholder,
+.modal-content[dir="ltr"] textarea::placeholder {
+  text-align: left;
+  direction: ltr;
+}
+
+/* Responsive Design - Keep title centered on small screens */
+@media (max-width: 480px) {
+  .modal-content .modal-title {
+    width: calc(100% - 60px); /* Adjust for smaller close button */
+    font-size: 18px;
+  }
+}
+
+/* Force text direction for all content */
+.modal-content[dir="rtl"] {
+  direction: rtl !important;
+}
+
+.modal-content[dir="ltr"] {
+  direction: ltr !important;
+}
+
+/* Override center alignment for certain elements */
+.modal-content[dir="rtl"] .form-divider,
+.modal-content[dir="rtl"] .modal-description {
+  text-align: center;
+}
+
+.modal-content[dir="ltr"] .form-divider,
+.modal-content[dir="ltr"] .modal-description {
+  text-align: center;
+}
+
+.modal-content[dir="rtl"] .resend-section {
+  text-align: center;
+  direction: rtl;
+}
+
+.modal-content[dir="ltr"] .resend-section {
+  text-align: center;
+  direction: ltr;
+}
+
+/* Ensure form elements inherit direction */
+.modal-content[dir="rtl"] .login-form,
+.modal-content[dir="rtl"] .register-form,
+.modal-content[dir="rtl"] .forgot-password-form,
+.modal-content[dir="rtl"] .verification-form,
+.modal-content[dir="rtl"] .reset-password-form {
+  direction: rtl;
+}
+
+.modal-content[dir="ltr"] .login-form,
+.modal-content[dir="ltr"] .register-form,
+.modal-content[dir="ltr"] .forgot-password-form,
+.modal-content[dir="ltr"] .verification-form,
+.modal-content[dir="ltr"] .reset-password-form {
+  direction: ltr;
+}
+
+/* Text elements that should always follow language direction */
+.modal-content[dir="rtl"] h1,
+.modal-content[dir="rtl"] h2,
+.modal-content[dir="rtl"] h3,
+.modal-content[dir="rtl"] h4,
+.modal-content[dir="rtl"] h5,
+.modal-content[dir="rtl"] h6,
+.modal-content[dir="rtl"] p,
+.modal-content[dir="rtl"] span,
+.modal-content[dir="rtl"] div,
+.modal-content[dir="rtl"] label {
+  direction: rtl;
+  text-align: right;
+}
+
+.modal-content[dir="ltr"] h1,
+.modal-content[dir="ltr"] h2,
+.modal-content[dir="ltr"] h3,
+.modal-content[dir="ltr"] h4,
+.modal-content[dir="ltr"] h5,
+.modal-content[dir="ltr"] h6,
+.modal-content[dir="ltr"] p,
+.modal-content[dir="ltr"] span,
+.modal-content[dir="ltr"] div,
+.modal-content[dir="ltr"] label {
+  direction: ltr;
+  text-align: left;
+} 
