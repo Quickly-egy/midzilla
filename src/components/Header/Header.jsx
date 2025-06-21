@@ -1,7 +1,9 @@
 import { useTheme } from '../../contexts/ThemeContext'
 import { useLanguage } from '../../contexts/LanguageContext'
 import { useState, useEffect, useRef } from 'react'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import SearchBar from '../SearchBar'
+import Navigation from './Navigation'
 import LoginModal from '../Auth/LoginModal'
 import RegisterModal from '../Auth/RegisterModal'
 import ForgotPasswordModal from '../Auth/ForgotPasswordModal'
@@ -14,6 +16,8 @@ import './Header.css'
 const Header = () => {
   const { isDarkMode, toggleTheme } = useTheme()
   const { t, language, toggleLanguage, isRTL } = useLanguage()
+  const navigate = useNavigate()
+  const location = useLocation()
 
   // Authentication state
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -171,7 +175,7 @@ const Header = () => {
 
           {/* Logo Section - Positioned based on language direction */}
           <div className="logo-section">
-            <div className="logo">
+            <Link to="/" className="logo">
               <img 
                 src="/assets/images/midzilla-logo.png" 
                 alt="Midzilla Logo" 
@@ -186,55 +190,13 @@ const Header = () => {
                 <h1 className="site-name">Midzilla</h1>
                 <p className="tagline">{t('tagline')}</p>
               </div>
-            </div>
+            </Link>
           </div>
 
           {/* Center Section - Navigation + Search */}
           <div className="center-section">
             {/* Navigation */}
-            <nav className="nav">
-              <ul className="nav-list">
-                <li className="nav-item">
-                  <a href="#home" className="nav-link active">{t('home')}</a>
-                </li>
-                
-                {/* Games Dropdown */}
-                <li className="nav-item dropdown">
-                  <a href="#games" className="nav-link dropdown-toggle">
-                    {t('games')}
-                    <span className="dropdown-arrow">▼</span>
-                  </a>
-                  <div className="dropdown-menu">
-                    <a href="#mobile-games" className="dropdown-item">{t('mobileGames')}</a>
-                    <a href="#pc-games" className="dropdown-item">{t('pcGames')}</a>
-                  </div>
-                </li>
-                
-                <li className="nav-item">
-                  <a href="#gift-cards" className="nav-link">{t('giftCards')}</a>
-                </li>
-                
-                <li className="nav-item">
-                  <a href="#software" className="nav-link">{t('software')}</a>
-                </li>
-                
-                <li className="nav-item">
-                  <a href="#offers" className="nav-link">{t('offers')}</a>
-                </li>
-                
-                {/* More Pages Dropdown */}
-                <li className="nav-item dropdown">
-                  <a href="#more" className="nav-link dropdown-toggle">
-                    {t('more')}
-                    <span className="dropdown-arrow">▼</span>
-                  </a>
-                  <div className="dropdown-menu">
-                    <a href="#faq" className="dropdown-item">{t('faq')}</a>
-                    <a href="#star-system" className="dropdown-item">{t('starSystem')}</a>
-                  </div>
-                </li>
-              </ul>
-            </nav>
+            <Navigation />
 
             {/* Search Bar */}
             <div className="search-section">
@@ -299,14 +261,18 @@ const Header = () => {
                       <span className="user-email">{userEmail}</span>
                     </div>
                     <div className="dropdown-divider"></div>
-                    <a href="#orders" className="dropdown-item">
+                    <Link to="/profile" className="dropdown-item">
+                      <span className="item-icon">👤</span>
+                      {isRTL ? 'ملفي الشخصي' : 'My Profile'}
+                    </Link>
+                    <Link to="/orders" className="dropdown-item">
                       <span className="item-icon">📦</span>
                       {isRTL ? 'طلباتي' : 'My Orders'}
-                    </a>
-                    <a href="#points" className="dropdown-item">
-                      <span className="item-icon">⭐</span>
-                      {isRTL ? 'النقاط' : 'Points'}
-                    </a>
+                    </Link>
+                    <Link to="/favorites" className="dropdown-item">
+                      <span className="item-icon">❤️</span>
+                      {isRTL ? 'المفضلة' : 'Favorites'}
+                    </Link>
                     <div className="dropdown-divider"></div>
                     <button 
                       className="dropdown-item logout-item"
@@ -381,65 +347,84 @@ const Header = () => {
               <h3 className="mobile-nav-title">{isRTL ? 'الصفحات' : 'Pages'}</h3>
               <ul className="mobile-nav-list">
                 <li className="mobile-nav-item">
-                  <a href="#home" className="mobile-nav-link active" onClick={handleMobileNavClick}>
+                  <Link to="/" className={`mobile-nav-link ${location.pathname === '/' ? 'active' : ''}`} onClick={handleMobileNavClick}>
                     <span className="nav-icon">🏠</span>
                     {t('home')}
-                  </a>
+                  </Link>
+                </li>
+                
+                <li className="mobile-nav-item">
+                  <Link to="/products" className={`mobile-nav-link ${location.pathname === '/products' ? 'active' : ''}`} onClick={handleMobileNavClick}>
+                    <span className="nav-icon">🎮</span>
+                    {t('allProducts')}
+                  </Link>
                 </li>
                 
                 <li className="mobile-nav-item">
                   <span className="mobile-nav-category">{t('games')}</span>
                   <ul className="mobile-nav-submenu">
                     <li>
-                      <a href="#mobile-games" className="mobile-nav-link" onClick={handleMobileNavClick}>
+                      <Link to="/category/mobile-games" className="mobile-nav-link" onClick={handleMobileNavClick}>
                         <span className="nav-icon">📱</span>
                         {t('mobileGames')}
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="#pc-games" className="mobile-nav-link" onClick={handleMobileNavClick}>
+                      <Link to="/category/pc-games" className="mobile-nav-link" onClick={handleMobileNavClick}>
                         <span className="nav-icon">💻</span>
                         {t('pcGames')}
-                      </a>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/category/console-games" className="mobile-nav-link" onClick={handleMobileNavClick}>
+                        <span className="nav-icon">🎮</span>
+                        {t('consoleGames')}
+                      </Link>
                     </li>
                   </ul>
                 </li>
                 
                 <li className="mobile-nav-item">
-                  <a href="#gift-cards" className="mobile-nav-link" onClick={handleMobileNavClick}>
+                  <Link to="/category/gift-cards" className="mobile-nav-link" onClick={handleMobileNavClick}>
                     <span className="nav-icon">🎁</span>
                     {t('giftCards')}
-                  </a>
+                  </Link>
                 </li>
                 
                 <li className="mobile-nav-item">
-                  <a href="#software" className="mobile-nav-link" onClick={handleMobileNavClick}>
-                    <span className="nav-icon">💿</span>
-                    {t('software')}
-                  </a>
+                  <Link to="/faq" className="mobile-nav-link" onClick={handleMobileNavClick}>
+                    <span className="nav-icon">❓</span>
+                    {t('faq')}
+                  </Link>
                 </li>
                 
                 <li className="mobile-nav-item">
-                  <a href="#offers" className="mobile-nav-link" onClick={handleMobileNavClick}>
+                  <Link to="/offers" className="mobile-nav-link" onClick={handleMobileNavClick}>
                     <span className="nav-icon">🔥</span>
                     {t('offers')}
-                  </a>
+                  </Link>
                 </li>
                 
                 <li className="mobile-nav-item">
                   <span className="mobile-nav-category">{t('more')}</span>
                   <ul className="mobile-nav-submenu">
                     <li>
-                      <a href="#faq" className="mobile-nav-link" onClick={handleMobileNavClick}>
-                        <span className="nav-icon">❓</span>
-                        {t('faq')}
-                      </a>
+                      <Link to="/about" className="mobile-nav-link" onClick={handleMobileNavClick}>
+                        <span className="nav-icon">ℹ️</span>
+                        {t('aboutUs')}
+                      </Link>
                     </li>
                     <li>
-                      <a href="#star-system" className="mobile-nav-link" onClick={handleMobileNavClick}>
+                      <Link to="/contact" className="mobile-nav-link" onClick={handleMobileNavClick}>
+                        <span className="nav-icon">📞</span>
+                        {t('contactUs')}
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/stars" className="mobile-nav-link" onClick={handleMobileNavClick}>
                         <span className="nav-icon">⭐</span>
-                        {t('starSystem')}
-                      </a>
+                        {t('starsSystem')}
+                      </Link>
                     </li>
                   </ul>
                 </li>
@@ -452,16 +437,22 @@ const Header = () => {
                 <h3 className="mobile-nav-title">{isRTL ? 'حسابي' : 'My Account'}</h3>
                 <ul className="mobile-nav-list">
                   <li className="mobile-nav-item">
-                    <a href="#orders" className="mobile-nav-link" onClick={handleMobileNavClick}>
-                      <span className="nav-icon">📦</span>
-                      {isRTL ? 'طلباتي' : 'My Orders'}
-                    </a>
+                    <Link to="/profile" className="mobile-nav-link" onClick={handleMobileNavClick}>
+                      <span className="nav-icon">👤</span>
+                      {isRTL ? 'ملفي الشخصي' : 'My Profile'}
+                    </Link>
                   </li>
                   <li className="mobile-nav-item">
-                    <a href="#points" className="mobile-nav-link" onClick={handleMobileNavClick}>
-                      <span className="nav-icon">⭐</span>
-                      {isRTL ? 'النقاط' : 'Points'}
-                    </a>
+                    <Link to="/orders" className="mobile-nav-link" onClick={handleMobileNavClick}>
+                      <span className="nav-icon">📦</span>
+                      {isRTL ? 'طلباتي' : 'My Orders'}
+                    </Link>
+                  </li>
+                  <li className="mobile-nav-item">
+                    <Link to="/favorites" className="mobile-nav-link" onClick={handleMobileNavClick}>
+                      <span className="nav-icon">❤️</span>
+                      {isRTL ? 'المفضلة' : 'Favorites'}
+                    </Link>
                   </li>
                   <li className="mobile-nav-item">
                     <button className="mobile-nav-link logout-btn" onClick={handleLogout}>

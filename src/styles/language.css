@@ -1,21 +1,59 @@
 /* Language-specific styles for Arabic/English bilingual support */
 
+/* Import Google Fonts for Arabic support */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+
 /* Font family adjustments */
-[lang="ar"], .rtl {
-  font-family: 'Cairo', 'Noto Sans Arabic', 'Arial', sans-serif;
+[lang="ar"], .rtl, .rtl * {
+  font-family: 'Cairo', 'Noto Sans Arabic', 'Segoe UI Historic', 'Tahoma', 'Arial Unicode MS', sans-serif !important;
+  font-feature-settings: "liga" 1, "kern" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-[lang="en"], .ltr {
-  font-family: 'Inter', 'Arial', sans-serif;
+[lang="en"], .ltr, .ltr * {
+  font-family: 'Segoe UI', 'Inter', 'Roboto', 'Helvetica', 'Arial', sans-serif;
 }
 
 /* Text alignment based on direction */
 .rtl {
   text-align: right;
+  direction: rtl;
 }
 
 .ltr {
   text-align: left;
+  direction: ltr;
+}
+
+/* Arabic text improvements */
+.rtl {
+  line-height: 1.8; /* Better spacing for Arabic text */
+  letter-spacing: 0.02em;
+}
+
+.rtl h1, .rtl h2, .rtl h3, .rtl h4, .rtl h5, .rtl h6 {
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+.rtl p, .rtl span, .rtl div {
+  line-height: 1.8;
+}
+
+/* Better Arabic number display */
+.rtl .arabic-numerals {
+  font-feature-settings: "lnum" 1;
+  direction: ltr;
+  unicode-bidi: embed;
+}
+
+/* Price display in Arabic */
+.rtl .price, .rtl .currency {
+  direction: ltr;
+  unicode-bidi: embed;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
 }
 
 /* Flex direction adjustments */

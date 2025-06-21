@@ -1,5 +1,4 @@
 import { useLanguage } from '../contexts/LanguageContext'
-import Header from '../components/Header'
 import { HeroSlider } from '../components/HomePage'
 import TrustIndicators from '../components/HomePage/TrustIndicators'
 import FeaturedCategories from '../components/HomePage/FeaturedCategories'
@@ -10,7 +9,6 @@ import MobileAppPromo from '../components/HomePage/MobileAppPromo'
 import StarsSystem from '../components/HomePage/StarsSystem'
 import PaymentMethods from '../components/HomePage/PaymentMethods'
 import Newsletter from '../components/HomePage/Newsletter'
-import Footer from '../components/Footer'
 import './HomePage.css'
 
 const HomePage = () => {
@@ -18,7 +16,6 @@ const HomePage = () => {
 
   return (
     <div className="home-page-wrapper" dir={isRTL ? 'rtl' : 'ltr'}>
-      <Header />
       <HeroSlider />
       <TrustIndicators />
       <FeaturedCategories />
@@ -29,7 +26,6 @@ const HomePage = () => {
       <FAQPreview />
       <PaymentMethods />
       <Newsletter />
-      <Footer />
     </div>
   )
 }

@@ -102,6 +102,9 @@
   align-items: center;
   gap: 12px;
   margin-right: -36px !important;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 .logo-image {
@@ -233,6 +236,20 @@
 .nav-link.active:hover {
   background: var(--secondary-color);
   transform: translateY(-1px);
+}
+
+/* React Router Link specific styles */
+.nav-link {
+  outline: none;
+}
+
+.nav-link:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.nav-link:visited {
+  color: inherit;
 }
 
 /* Dropdown Styles */

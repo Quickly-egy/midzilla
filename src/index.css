@@ -3,7 +3,7 @@
 @import url('./styles/language.css');
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'Arial', 'Helvetica', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 

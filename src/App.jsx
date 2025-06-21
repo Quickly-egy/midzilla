@@ -1,14 +1,18 @@
 import { useState, useEffect } from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { ThemeProvider } from './contexts/ThemeContext'
 import { LanguageProvider } from './contexts/LanguageContext'
 import { CurrencyProvider } from './contexts/CurrencyContext'
 import Loader from './components/Loader/Loader'
-import HomePage from './pages/HomePage'
+import Header from './components/Header/Header'
+import Footer from './components/Footer/Footer'
+import AppRoutes from './routes/AppRoutes'
 import { CartSidebar } from './components/Cart'
 import FavoritesSidebar from './components/Favorites/FavoritesSidebar'
 import CurrencySelector from './components/CurrencySelector/CurrencySelector'
 import './styles/themes.css'
 import './styles/language.css'
+import './styles/router.css'
 
 function App() {
   const [showAnimation, setShowAnimation] = useState(true)
@@ -40,16 +44,24 @@ function App() {
 
   // عرض التطبيق الرئيسي مع نظام الثيم واللغة
   return (
-    <LanguageProvider>
-      <ThemeProvider>
-        <CurrencyProvider>
-          <HomePage />
-          <CartSidebar />
-          <FavoritesSidebar />
-          <CurrencySelector />
-        </CurrencyProvider>
-      </ThemeProvider>
-    </LanguageProvider>
+    <Router>
+      <LanguageProvider>
+        <ThemeProvider>
+          <CurrencyProvider>
+            <div className="app">
+              <Header />
+              <main className="main-content">
+                <AppRoutes />
+              </main>
+              <Footer />
+              <CartSidebar />
+              <FavoritesSidebar />
+              <CurrencySelector />
+            </div>
+          </CurrencyProvider>
+        </ThemeProvider>
+      </LanguageProvider>
+    </Router>
   )
 }
 

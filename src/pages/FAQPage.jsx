@@ -1,8 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTheme } from '../contexts/ThemeContext';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
 import './FAQPage.css';
 
 const FAQPage = () => {
@@ -124,7 +122,6 @@ const FAQPage = () => {
 
   return (
     <div className={`faq-page ${isRTL ? 'rtl' : 'ltr'} ${isDarkMode ? 'dark' : 'light'}`} dir={isRTL ? 'rtl' : 'ltr'}>
-      <Header />
       
       <main className="faq-main">
         <div className="faq-page-container">
@@ -261,8 +258,6 @@ const FAQPage = () => {
 
         </div>
       </main>
-      
-      <Footer />
     </div>
   );
 };
