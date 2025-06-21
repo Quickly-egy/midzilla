@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Lottie from 'lottie-react';
 import { useLanguage } from '../../contexts/LanguageContext';
 import { useCurrency } from '../../contexts/CurrencyContext';
-import currencyAnimation from '../../assets/curencies.json';
+import currencyAnimation from '../../assets/Animation - 1750444903621.json';
 import './CurrencySelector.css';
 
 const CurrencySelector = () => {

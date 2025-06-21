@@ -94,4 +94,77 @@
 
 .ltr .nav-list {
   direction: ltr;
+}
+
+/* Enhanced Mobile navigation RTL text direction */
+.rtl .mobile-nav-link,
+.rtl .mobile-nav-category,
+.rtl .mobile-nav-title,
+.rtl .mobile-setting-label {
+  text-align: right;
+  direction: rtl;
+}
+
+.ltr .mobile-nav-link,
+.ltr .mobile-nav-category, 
+.ltr .mobile-nav-title,
+.ltr .mobile-setting-label {
+  text-align: left;
+  direction: ltr;
+}
+
+/* Enhanced Mobile sidebar content direction */
+.rtl .mobile-sidebar-content {
+  direction: rtl;
+}
+
+.ltr .mobile-sidebar-content {
+  direction: ltr;
+}
+
+/* Enhanced Mobile search direction */
+.rtl .mobile-search-section .search-input {
+  text-align: right;
+  direction: rtl;
+}
+
+.ltr .mobile-search-section .search-input {
+  text-align: left;
+  direction: ltr;
+}
+
+/* Mobile menu RTL flex direction */
+.rtl .mobile-nav-link {
+  flex-direction: row-reverse;
+}
+
+.ltr .mobile-nav-link {
+  flex-direction: row;
+}
+
+/* Mobile settings RTL flex direction */
+.rtl .mobile-setting-label {
+  flex-direction: row-reverse;
+}
+
+.ltr .mobile-setting-label {
+  flex-direction: row;
+}
+
+/* Mobile menu header RTL direction */
+.rtl .mobile-menu-header {
+  flex-direction: row-reverse;
+}
+
+.ltr .mobile-menu-header {
+  flex-direction: row;
+}
+
+/* Mobile logo RTL direction */
+.rtl .mobile-logo {
+  flex-direction: row-reverse;
+}
+
+.ltr .mobile-logo {
+  flex-direction: row;
 } 

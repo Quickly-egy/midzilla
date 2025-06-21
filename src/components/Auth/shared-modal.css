@@ -236,11 +236,166 @@
   direction: ltr;
 }
 
-/* Responsive Design - Keep title centered on small screens */
+/* Responsive Design - Keep title centered on all screen sizes */
+
+/* Tablet Responsive */
+@media (max-width: 1024px) {
+  .modal-content .modal-title {
+    width: calc(100% - 70px);
+    font-size: 22px;
+  }
+  
+  .modal-content .form-input {
+    padding: 11px 15px;
+    font-size: 15px;
+  }
+  
+  .modal-content .form-label {
+    font-size: 14px;
+  }
+  
+  .modal-content .submit-button,
+  .modal-content .register-button,
+  .modal-content .login-button {
+    padding: 12px;
+    font-size: 15px;
+  }
+}
+
+/* Small Tablet / Large Mobile */
+@media (max-width: 768px) {
+  .modal-content .modal-title {
+    width: calc(100% - 85px);
+    font-size: 21px;
+  }
+  
+  .modal-content .form-input {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+  
+  .modal-content .form-label {
+    font-size: 13px;
+  }
+  
+  .modal-content .submit-button,
+  .modal-content .register-button,
+  .modal-content .login-button {
+    padding: 11px;
+    font-size: 14px;
+  }
+  
+  .modal-content .close-button {
+    font-size: 26px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 8px;
+    position: relative;
+    z-index: 10;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+}
+
+/* Medium Mobile */
 @media (max-width: 480px) {
   .modal-content .modal-title {
-    width: calc(100% - 60px); /* Adjust for smaller close button */
+    width: calc(100% - 80px); /* Adjust for larger close button */
+    font-size: 20px;
+  }
+  
+  .modal-content .form-input {
+    padding: 9px 12px;
+    font-size: 14px;
+  }
+  
+  .modal-content .form-label {
+    font-size: 13px;
+  }
+  
+  .modal-content .submit-button,
+  .modal-content .register-button,
+  .modal-content .login-button {
+    padding: 10px;
+    font-size: 13px;
+  }
+  
+  .modal-content .close-button {
+    font-size: 24px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 10px;
+    position: relative;
+    z-index: 10;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  
+  .modal-content .link-button,
+  .modal-content .resend-button {
+    font-size: 13px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 360px) {
+  .modal-content .modal-title {
+    width: calc(100% - 75px);
     font-size: 18px;
+  }
+  
+  .modal-content .form-input {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+  
+  .modal-content .form-label {
+    font-size: 12px;
+  }
+  
+  .modal-content .submit-button,
+  .modal-content .register-button,
+  .modal-content .login-button {
+    padding: 9px;
+    font-size: 12px;
+  }
+  
+  .modal-content .close-button {
+    font-size: 22px;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 11px;
+    position: relative;
+    z-index: 10;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  
+  .modal-content .link-button,
+  .modal-content .resend-button {
+    font-size: 12px;
+  }
+  
+  .modal-content .error-message {
+    font-size: 11px;
+  }
+  
+  .modal-content .info-text,
+  .modal-content .description {
+    font-size: 12px;
+  }
+  
+  /* Verification inputs */
+  .modal-content .verification-input {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
   }
 }
 

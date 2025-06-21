@@ -135,7 +135,12 @@ const SearchBar = () => {
           onClick={handleSearch}
           aria-label={t('searchButton')}
         >
-          <span className="search-icon">🔍</span>
+          <svg className="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="11" cy="11" r="8" stroke="white" strokeWidth="3" fill="none"/>
+            <path d="m21 21-4.35-4.35" stroke="white" strokeWidth="3" strokeLinecap="round"/>
+          </svg>
+          {/* نسخة احتياطية نصية */}
+          <span className="search-icon-fallback" style={{position: 'absolute', fontSize: '18px', color: 'white', display: 'none'}}>🔍</span>
         </button>
       </div>
 

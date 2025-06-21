@@ -20,8 +20,12 @@ const Header = () => {
   const [userEmail, setUserEmail] = useState('')
   const [showUserDropdown, setShowUserDropdown] = useState(false)
   
-  // Ref for user menu
+  // Mobile menu state
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  
+  // Ref for user menu and mobile menu
   const userMenuRef = useRef(null)
+  const mobileMenuRef = useRef(null)
 
   // Modal states
   const [modals, setModals] = useState({
@@ -33,11 +37,17 @@ const Header = () => {
   })
   const [resetEmail, setResetEmail] = useState('')
 
-  // Close dropdown when clicking outside
+  // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (userMenuRef.current && !userMenuRef.current.contains(event.target)) {
         setShowUserDropdown(false)
+      }
+      if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn')
+        if (!mobileMenuBtn?.contains(event.target)) {
+          setIsMobileMenuOpen(false)
+        }
       }
     }
 
@@ -45,9 +55,22 @@ const Header = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
+  // Close mobile menu when screen size changes
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        setIsMobileMenuOpen(false)
+      }
+    }
+
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   // Modal handlers
   const openModal = (modalName) => {
     setModals(prev => ({ ...prev, [modalName]: true }))
+    setIsMobileMenuOpen(false) // Close mobile menu when opening modal
   }
 
   const closeAllModals = () => {
@@ -99,6 +122,7 @@ const Header = () => {
     setIsLoggedIn(false)
     setUserEmail('')
     setShowUserDropdown(false)
+    setIsMobileMenuOpen(false)
   }
 
   // Handle dropdown toggle
@@ -106,10 +130,45 @@ const Header = () => {
     setShowUserDropdown(prev => !prev)
   }
 
+  // Handle mobile menu toggle
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(prev => !prev)
+  }
+
+  // Handle navigation link click in mobile menu
+  const handleMobileNavClick = () => {
+    setIsMobileMenuOpen(false)
+  }
+
   return (
     <>
       <header className="header" dir={isRTL ? 'rtl' : 'ltr'}>
         <div className="header-container">
+          {/* Mobile Menu Button */}
+          <button 
+            className={`mobile-menu-btn ${isMobileMenuOpen ? 'active' : ''}`}
+            onClick={toggleMobileMenu}
+            aria-label={language === 'ar' ? 'فتح القائمة' : 'Open Menu'}
+          >
+            <span className="hamburger">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </button>
+
+          {/* Quick Actions - Left side (North) - Only show when logged in */}
+          {isLoggedIn && (
+            <div className="left-quick-actions">
+              <div className="quick-favorites">
+                <FavoritesButton />
+              </div>
+              <div className="quick-cart">
+                <CartButton />
+              </div>
+            </div>
+          )}
+
           {/* Logo Section - Positioned based on language direction */}
           <div className="logo-section">
             <div className="logo">
@@ -216,17 +275,7 @@ const Header = () => {
               </button>
             </div>
 
-            {/* Cart and Favorites Buttons - Only show when logged in */}
-            {isLoggedIn && (
-              <>
-                <div className="favorites-button-wrapper">
-                  <FavoritesButton />
-                </div>
-                <div className="cart-button-wrapper">
-                  <CartButton />
-                </div>
-              </>
-            )}
+
 
             {/* Auth Section */}
             {isLoggedIn ? (
@@ -287,17 +336,208 @@ const Header = () => {
               </div>
             )}
           </div>
-
-          {/* Mobile Menu Button */}
-          <button className="mobile-menu-btn" aria-label={language === 'ar' ? 'فتح القائمة' : 'Open Menu'}>
-            <span className="hamburger">
-              <span></span>
-              <span></span>
-              <span></span>
-            </span>
-          </button>
         </div>
       </header>
+
+      {/* Mobile Sidebar Menu */}
+      <div 
+        className={`mobile-sidebar ${isMobileMenuOpen ? 'open' : ''}`}
+        ref={mobileMenuRef}
+        dir={isRTL ? 'rtl' : 'ltr'}
+      >
+        <div className="mobile-sidebar-content">
+          {/* Mobile Menu Header */}
+          <div className="mobile-menu-header">
+            <div className="mobile-logo">
+              <img 
+                src="/assets/images/midzilla-logo.png" 
+                alt="Midzilla Logo" 
+                className="mobile-logo-image"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.nextElementSibling.style.display = 'inline';
+                }}
+              />
+              <span className="mobile-logo-fallback" style={{display: 'none'}}>🎮</span>
+              <span className="mobile-logo-text">Midzilla</span>
+            </div>
+            <button 
+              className="mobile-menu-close"
+              onClick={() => setIsMobileMenuOpen(false)}
+              aria-label={language === 'ar' ? 'إغلاق القائمة' : 'Close Menu'}
+            >
+              ×
+            </button>
+          </div>
+
+          {/* Mobile Navigation */}
+          <nav className="mobile-nav">
+            {/* Mobile Search Bar */}
+            <div className="mobile-search-section">
+              <SearchBar />
+            </div>
+
+            <div className="mobile-nav-section">
+              <h3 className="mobile-nav-title">{isRTL ? 'الصفحات' : 'Pages'}</h3>
+              <ul className="mobile-nav-list">
+                <li className="mobile-nav-item">
+                  <a href="#home" className="mobile-nav-link active" onClick={handleMobileNavClick}>
+                    <span className="nav-icon">🏠</span>
+                    {t('home')}
+                  </a>
+                </li>
+                
+                <li className="mobile-nav-item">
+                  <span className="mobile-nav-category">{t('games')}</span>
+                  <ul className="mobile-nav-submenu">
+                    <li>
+                      <a href="#mobile-games" className="mobile-nav-link" onClick={handleMobileNavClick}>
+                        <span className="nav-icon">📱</span>
+                        {t('mobileGames')}
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#pc-games" className="mobile-nav-link" onClick={handleMobileNavClick}>
+                        <span className="nav-icon">💻</span>
+                        {t('pcGames')}
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+                
+                <li className="mobile-nav-item">
+                  <a href="#gift-cards" className="mobile-nav-link" onClick={handleMobileNavClick}>
+                    <span className="nav-icon">🎁</span>
+                    {t('giftCards')}
+                  </a>
+                </li>
+                
+                <li className="mobile-nav-item">
+                  <a href="#software" className="mobile-nav-link" onClick={handleMobileNavClick}>
+                    <span className="nav-icon">💿</span>
+                    {t('software')}
+                  </a>
+                </li>
+                
+                <li className="mobile-nav-item">
+                  <a href="#offers" className="mobile-nav-link" onClick={handleMobileNavClick}>
+                    <span className="nav-icon">🔥</span>
+                    {t('offers')}
+                  </a>
+                </li>
+                
+                <li className="mobile-nav-item">
+                  <span className="mobile-nav-category">{t('more')}</span>
+                  <ul className="mobile-nav-submenu">
+                    <li>
+                      <a href="#faq" className="mobile-nav-link" onClick={handleMobileNavClick}>
+                        <span className="nav-icon">❓</span>
+                        {t('faq')}
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#star-system" className="mobile-nav-link" onClick={handleMobileNavClick}>
+                        <span className="nav-icon">⭐</span>
+                        {t('starSystem')}
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            {/* User Menu in Mobile Sidebar */}
+            {isLoggedIn && (
+              <div className="mobile-nav-section">
+                <h3 className="mobile-nav-title">{isRTL ? 'حسابي' : 'My Account'}</h3>
+                <ul className="mobile-nav-list">
+                  <li className="mobile-nav-item">
+                    <a href="#orders" className="mobile-nav-link" onClick={handleMobileNavClick}>
+                      <span className="nav-icon">📦</span>
+                      {isRTL ? 'طلباتي' : 'My Orders'}
+                    </a>
+                  </li>
+                  <li className="mobile-nav-item">
+                    <a href="#points" className="mobile-nav-link" onClick={handleMobileNavClick}>
+                      <span className="nav-icon">⭐</span>
+                      {isRTL ? 'النقاط' : 'Points'}
+                    </a>
+                  </li>
+                  <li className="mobile-nav-item">
+                    <button className="mobile-nav-link logout-btn" onClick={handleLogout}>
+                      <span className="nav-icon">🚪</span>
+                      {isRTL ? 'تسجيل الخروج' : 'Logout'}
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            )}
+
+            {/* Auth Buttons in Mobile Sidebar */}
+            {!isLoggedIn && (
+              <div className="mobile-nav-section">
+                <div className="mobile-auth-buttons">
+                  <button 
+                    className="btn btn-outline mobile-auth-btn"
+                    onClick={() => openModal('login')}
+                  >
+                    {t('login')}
+                  </button>
+                  <button 
+                    className="btn btn-primary mobile-auth-btn"
+                    onClick={() => openModal('register')}
+                  >
+                    {t('signup')}
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* Mobile Settings */}
+            <div className="mobile-nav-section">
+              <h3 className="mobile-nav-title">{isRTL ? 'الإعدادات' : 'Settings'}</h3>
+              <div className="mobile-settings">
+                <div className="mobile-setting-item">
+                  <label className="mobile-setting-label">
+                    <span className="setting-icon">🌍</span>
+                    {isRTL ? 'اللغة' : 'Language'}
+                  </label>
+                  <button 
+                    className={`mobile-language-toggle ${language}`}
+                    onClick={toggleLanguage}
+                  >
+                    <span className={`lang-option ${language === 'ar' ? 'active' : ''}`}>ع</span>
+                    <span className={`lang-option ${language === 'en' ? 'active' : ''}`}>EN</span>
+                  </button>
+                </div>
+                
+                <div className="mobile-setting-item">
+                  <label className="mobile-setting-label">
+                    <span className="setting-icon">{isDarkMode ? '🌙' : '☀️'}</span>
+                    {isDarkMode ? (t('lightMode') || 'الوضع المضيء') : (t('darkMode') || 'الوضع المظلم')}
+                  </label>
+                  <button 
+                    className={`mobile-theme-toggle ${isDarkMode ? 'dark' : 'light'}`}
+                    onClick={toggleTheme}
+                  >
+                    <div className="mobile-toggle-track">
+                      <div className="mobile-toggle-thumb"></div>
+                    </div>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+
+      {/* Mobile Sidebar Overlay */}
+      {isMobileMenuOpen && (
+        <div 
+          className="mobile-sidebar-overlay"
+          onClick={() => setIsMobileMenuOpen(false)}
+        ></div>
+      )}
 
       {/* Authentication Modals */}
       <LoginModal
