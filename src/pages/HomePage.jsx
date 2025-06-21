@@ -1,11 +1,13 @@
 import { useLanguage } from '../contexts/LanguageContext'
 import Header from '../components/Header'
-import MainPage from '../components/MainPage'
 import { HeroSlider } from '../components/HomePage'
 import TrustIndicators from '../components/HomePage/TrustIndicators'
 import FeaturedCategories from '../components/HomePage/FeaturedCategories'
 import FeaturedProducts from '../components/HomePage/FeaturedProducts'
+import FAQPreview from '../components/HomePage/FAQPreview'
 import CustomerReviews from '../components/HomePage/CustomerReviews'
+import MobileAppPromo from '../components/HomePage/MobileAppPromo'
+import StarsSystem from '../components/HomePage/StarsSystem'
 import './HomePage.css'
 
 const HomePage = () => {
@@ -19,7 +21,9 @@ const HomePage = () => {
       <FeaturedCategories />
       <FeaturedProducts />
       <CustomerReviews />
-      <MainPage />
+      <MobileAppPromo />
+      <StarsSystem />
+      <FAQPreview />
     </div>
   )
 }
