@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTheme } from '../contexts/ThemeContext';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import './FAQPage.css';
 
 const FAQPage = () => {
@@ -260,6 +261,8 @@ const FAQPage = () => {
 
         </div>
       </main>
+      
+      <Footer />
     </div>
   );
 };

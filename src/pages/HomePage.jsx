@@ -10,6 +10,7 @@ import MobileAppPromo from '../components/HomePage/MobileAppPromo'
 import StarsSystem from '../components/HomePage/StarsSystem'
 import PaymentMethods from '../components/HomePage/PaymentMethods'
 import Newsletter from '../components/HomePage/Newsletter'
+import Footer from '../components/Footer'
 import './HomePage.css'
 
 const HomePage = () => {
@@ -28,6 +29,7 @@ const HomePage = () => {
       <FAQPreview />
       <PaymentMethods />
       <Newsletter />
+      <Footer />
     </div>
   )
 }

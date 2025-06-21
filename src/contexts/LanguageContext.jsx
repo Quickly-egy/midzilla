@@ -202,6 +202,42 @@ const translations = {
       }
     },
 
+    // Footer
+    footer: {
+      aboutUs: {
+        title: 'عن الموقع',
+        description: 'متجر رقمي متخصص في شحن الألعاب بأفضل الأسعار وخدمة سريعة وآمنة. نوفر خدمات شحن موثوقة لجميع الألعاب المشهورة.',
+        linkText: 'من نحن'
+      },
+      quickLinks: {
+        title: 'روابط سريعة',
+        allProducts: 'جميع المنتجات',
+        aboutUs: 'من نحن',
+        faq: 'الأسئلة الشائعة',
+        privacy: 'سياسة الخصوصية',
+        exchangeRefund: 'سياسة الاستبدال والاسترداد',
+        contact: 'تواصل معنا',
+        starsSystem: 'نظام النجوم'
+      },
+      contactInfo: {
+        title: 'معلومات التواصل',
+        whatsapp: '+20 123 456 7890',
+        email: 'support@midzilla.com'
+      },
+      socialMedia: {
+        title: 'وسائل التواصل الاجتماعي',
+        description: 'تابعنا على مواقع التواصل الاجتماعي للحصول على آخر العروض والأخبار'
+      },
+      security: {
+        title: 'شهادات الأمان والثقة'
+      },
+      copyright: 'جميع الحقوق محفوظة',
+      features: {
+        responsive: 'متجاوب مع جميع الشاشات',
+        secure: 'موقع آمن ومحمي'
+      }
+    },
+
     // Common
     loading: 'جاري التحميل...',
     error: 'حدث خطأ',
@@ -405,6 +441,42 @@ const translations = {
       },
       assurance: {
         description: 'Your privacy matters to us — we won\'t share your data with any third party'
+      }
+    },
+
+    // Footer
+    footer: {
+      aboutUs: {
+        title: 'About Us',
+        description: 'A digital store specialized in game charging with the best prices and fast, secure service.',
+        linkText: 'Learn More'
+      },
+      quickLinks: {
+        title: 'Quick Links',
+        allProducts: 'All Products',
+        aboutUs: 'About Us',
+        faq: 'FAQ',
+        privacy: 'Privacy Policy',
+        exchangeRefund: 'Exchange & Refund Policy',
+        contact: 'Contact Us',
+        starsSystem: 'Stars System'
+      },
+      contactInfo: {
+        title: 'Contact Info',
+        whatsapp: '+20 123 456 7890',
+        email: 'support@midzilla.com'
+      },
+      socialMedia: {
+        title: 'Social Media',
+        description: 'Follow us on social media for the latest offers and news'
+      },
+      security: {
+        title: 'Security & Trust Certificates'
+      },
+      copyright: 'All rights reserved',
+      features: {
+        responsive: 'Responsive for all screens',
+        secure: 'Secure and protected website'
       }
     },
 
