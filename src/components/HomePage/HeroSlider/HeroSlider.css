@@ -37,66 +37,64 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   opacity: 0;
   visibility: hidden;
   border-radius: 0;
-  transform: translateX(100%) scale(0.8) rotateY(45deg);
-  filter: blur(5px);
+  transform: translateX(30px) scale(0.95);
+  filter: blur(2px);
 }
 
 .slide.active {
   opacity: 1;
   visibility: visible;
-  transform: translateX(0) scale(1) rotateY(0deg) !important;
+  transform: translateX(0) scale(1) !important;
   filter: blur(0px);
-  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Image Placeholder */
-.image-placeholder {
+/* Slide Image */
+.slide-image {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 50%, #e8f5e8 100%);
-  border: 2px dashed #ccc;
-  border-radius: 0; /* إزالة الحواف الدائرية */
-  display: flex;
-  align-items: center;
-  justify-content: center;
   z-index: 1;
+  overflow: hidden;
+  background: transparent; /* إزالة الخلفية الرمادية */
 }
 
-.placeholder-content {
-  text-align: center;
-  color: #666;
-  font-family: 'Cairo', 'Arial', sans-serif;
+.slide-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* تغيير إلى cover لملء المساحة بالكامل */
+  object-position: center;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: block;
+  background: transparent;
+  border-radius: 0; /* إزالة الحواف المدورة */
+  box-shadow: none; /* إزالة الظل */
 }
 
-.placeholder-icon {
-  font-size: 4rem;
-  margin-bottom: 1rem;
-  opacity: 0.7;
+.slide.active .slide-image img {
+  transform: scale(1.02); /* تقليل التكبير لجعله أكثر نعومة */
 }
 
-.placeholder-text {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.placeholder-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #555;
-}
-
-.placeholder-dimensions {
-  font-size: 1rem;
-  color: #888;
-  font-weight: 400;
+.slide-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg, 
+    rgba(0,0,0,0.15) 0%, 
+    rgba(0,0,0,0.05) 50%, 
+    rgba(0,0,0,0.15) 100%
+  );
+  pointer-events: none;
 }
 
 /* Slide Overlay */
@@ -120,12 +118,13 @@
   position: relative;
   z-index: 2;
   display: flex;
-  align-items: center;
+  align-items: flex-end; /* تغيير من center إلى flex-end لإنزال الزر */
   justify-content: center;
   width: 100%;
   height: 100%;
   text-align: center;
   padding: 2rem;
+  padding-bottom: 4rem; /* إضافة padding أكبر من الأسفل */
 }
 
 /* Enhanced Green CTA Button */
@@ -135,7 +134,7 @@
   gap: 12px;
   padding: 20px 45px;
   background: linear-gradient(135deg, #00C851, #4CAF50, #2E7D32);
-  background-size: 300% 300%;
+  background-size: 200% 200%;
   color: white;
   text-decoration: none;
   border-radius: 60px;
@@ -143,56 +142,45 @@
   font-weight: 800;
   font-family: 'Cairo', 'Arial', sans-serif;
   box-shadow: 
-    0 0 30px rgba(0, 200, 81, 0.4),
-    0 12px 40px rgba(0, 200, 81, 0.25),
-    0 6px 20px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    0 0 20px rgba(0, 200, 81, 0.3),
+    0 8px 25px rgba(0, 200, 81, 0.2),
+    0 4px 15px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   border: 3px solid transparent;
   background-clip: padding-box;
   position: relative;
   overflow: hidden;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  animation: enhancedGreenGlow 4s ease infinite;
+  animation: subtleGreenGlow 3s ease infinite;
   backdrop-filter: blur(10px);
 }
 
-@keyframes enhancedGreenGlow {
+@keyframes subtleGreenGlow {
   0% { 
     background-position: 0% 50%; 
     box-shadow: 
-      0 0 30px rgba(0, 200, 81, 0.4),
-      0 12px 40px rgba(0, 200, 81, 0.25),
-      0 6px 20px rgba(0, 0, 0, 0.15),
-      inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    transform: scale(1);
-  }
-  25% {
-    background-position: 50% 0%;
-    transform: scale(1.02);
+      0 0 20px rgba(0, 200, 81, 0.3),
+      0 8px 25px rgba(0, 200, 81, 0.2),
+      0 4px 15px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
   50% { 
     background-position: 100% 50%; 
     box-shadow: 
-      0 0 40px rgba(0, 200, 81, 0.6),
-      0 15px 50px rgba(0, 200, 81, 0.35),
-      0 8px 25px rgba(0, 0, 0, 0.2),
-      inset 0 1px 0 rgba(255, 255, 255, 0.4);
-    transform: scale(1.03);
-  }
-  75% {
-    background-position: 50% 100%;
-    transform: scale(1.02);
+      0 0 25px rgba(0, 200, 81, 0.4),
+      0 10px 30px rgba(0, 200, 81, 0.25),
+      0 5px 18px rgba(0, 0, 0, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25);
   }
   100% { 
     background-position: 0% 50%; 
     box-shadow: 
-      0 0 30px rgba(0, 200, 81, 0.4),
-      0 12px 40px rgba(0, 200, 81, 0.25),
-      0 6px 20px rgba(0, 0, 0, 0.15),
-      inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    transform: scale(1);
+      0 0 20px rgba(0, 200, 81, 0.3),
+      0 8px 25px rgba(0, 200, 81, 0.2),
+      0 4px 15px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
 }
 
@@ -253,13 +241,13 @@
 }
 
 .green-cta:hover {
-  transform: translateY(-8px) scale(1.1);
+  transform: translateY(-3px) scale(1.02);
   box-shadow: 
-    0 0 50px rgba(0, 200, 81, 0.8),
-    0 0 100px rgba(0, 200, 81, 0.5),
-    0 20px 60px rgba(0, 0, 0, 0.3),
-    inset 0 2px 0 rgba(255, 255, 255, 0.5);
-  border: 3px solid rgba(255, 255, 255, 0.3);
+    0 0 30px rgba(0, 200, 81, 0.5),
+    0 15px 35px rgba(0, 200, 81, 0.3),
+    0 8px 20px rgba(0, 0, 0, 0.15),
+    inset 0 2px 0 rgba(255, 255, 255, 0.3);
+  background-size: 150% 150%;
 }
 
 .green-cta:hover .cta-glow {
@@ -305,16 +293,8 @@
     min-height: 480px; /* قللت بنسبة 20% من 600px */
   }
   
-  .placeholder-icon {
-    font-size: 5rem;
-  }
-  
-  .placeholder-title {
-    font-size: 1.8rem;
-  }
-  
-  .placeholder-dimensions {
-    font-size: 1.2rem;
+  .slide-image img {
+    object-fit: cover;
   }
   
   .green-cta {
@@ -331,16 +311,8 @@
     min-height: 360px; /* قللت بنسبة 20% من 450px */
   }
   
-  .placeholder-icon {
-    font-size: 3.5rem;
-  }
-  
-  .placeholder-title {
-    font-size: 1.4rem;
-  }
-  
-  .placeholder-dimensions {
-    font-size: 1rem;
+  .slide-image img {
+    object-fit: cover;
   }
   
   .green-cta {
@@ -360,18 +332,11 @@
   
   .slide-content {
     padding: 1.5rem;
+    padding-bottom: 3rem; /* إنزال الزر أكثر على التابلت */
   }
   
-  .placeholder-icon {
-    font-size: 3rem;
-  }
-  
-  .placeholder-title {
-    font-size: 1.3rem;
-  }
-  
-  .placeholder-dimensions {
-    font-size: 0.9rem;
+  .slide-image {
+    border-radius: 0;
   }
   
   .green-cta {
@@ -392,18 +357,11 @@
   
   .slide-content {
     padding: 1rem;
+    padding-bottom: 2.5rem; /* إنزال الزر على الشاشات الكبيرة للموبايل */
   }
   
-  .placeholder-icon {
-    font-size: 2.5rem;
-  }
-  
-  .placeholder-title {
-    font-size: 1.1rem;
-  }
-  
-  .placeholder-dimensions {
-    font-size: 0.8rem;
+  .slide-image img {
+    object-fit: cover;
   }
   
   .green-cta {
@@ -421,16 +379,9 @@
     margin: 0;
   }
   
-  .placeholder-icon {
-    font-size: 2rem;
-  }
-  
-  .placeholder-title {
-    font-size: 1rem;
-  }
-  
-  .placeholder-dimensions {
-    font-size: 0.7rem;
+  .slide-image img {
+    object-fit: cover;
+    object-position: center;
   }
   
   .green-cta {
@@ -450,18 +401,12 @@
   
   .slide-content {
     padding: 0.8rem;
+    padding-bottom: 2rem; /* إنزال الزر على الشاشات الصغيرة */
   }
   
-  .placeholder-icon {
-    font-size: 1.5rem;
-  }
-  
-  .placeholder-title {
-    font-size: 0.9rem;
-  }
-  
-  .placeholder-dimensions {
-    font-size: 0.6rem;
+  .slide-image img {
+    object-fit: cover;
+    object-position: center;
   }
   
   .green-cta {
@@ -499,27 +444,26 @@ html.dark-theme .hero-slider,
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
-body.dark-theme .image-placeholder,
-html.dark-theme .image-placeholder,
-.dark-theme .image-placeholder {
-  background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%);
-  border-color: #555;
+body.dark-theme .slide-image,
+html.dark-theme .slide-image,
+.dark-theme .slide-image {
+  background: transparent; /* إزالة الخلفية في الـ dark theme أيضاً */
 }
 
-body.dark-theme .placeholder-content,
-html.dark-theme .placeholder-content,
-.dark-theme .placeholder-content {
-  color: #bbb;
+body.dark-theme .slide-image img,
+html.dark-theme .slide-image img,
+.dark-theme .slide-image img {
+  background: transparent;
+  box-shadow: none; /* إزالة الظل في الـ dark theme */
 }
 
-body.dark-theme .placeholder-title,
-html.dark-theme .placeholder-title,
-.dark-theme .placeholder-title {
-  color: #fff;
-}
-
-body.dark-theme .placeholder-dimensions,
-html.dark-theme .placeholder-dimensions,
-.dark-theme .placeholder-dimensions {
-  color: #888;
+body.dark-theme .slide-image::after,
+html.dark-theme .slide-image::after,
+.dark-theme .slide-image::after {
+  background: linear-gradient(
+    135deg, 
+    rgba(0,0,0,0.3) 0%, 
+    rgba(0,0,0,0.1) 50%, 
+    rgba(0,0,0,0.3) 100%
+  );
 } 

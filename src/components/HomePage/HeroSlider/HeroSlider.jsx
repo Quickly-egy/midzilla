@@ -15,88 +15,76 @@ const HeroSlider = () => {
   const ctaRef = useRef(null)
   const particlesRef = useRef(null)
 
-  // بيانات الـ slides - صور فقط مع أزرار
+  // بيانات الـ slides - صور حقيقية مع أزرار
   const slides = [
     {
       id: 1,
-      image: null, // سيتم وضع الصورة هنا
+      image: '/assets/slider/Wuthering_waves_new_banner_green.jpg',
       ctaText: isRTL ? 'اشتري الآن' : 'Shop Now',
       ctaLink: '/products',
-      alt: isRTL ? 'عرض خاص' : 'Special Offer',
-      dimensions: '1920x1080' // أبعاد الصورة المقترحة
+      alt: isRTL ? 'Wuthering Waves' : 'Wuthering Waves'
     },
     {
       id: 2,
-      image: null,
+      image: '/assets/slider/Wild_Rift_green_banner.jpg',
       ctaText: isRTL ? 'اكتشف المزيد' : 'Discover More',
       ctaLink: '/categories',
-      alt: isRTL ? 'أحدث المنتجات' : 'Latest Products',
-      dimensions: '1920x1080'
+      alt: isRTL ? 'Wild Rift' : 'Wild Rift'
     },
     {
       id: 3,
-      image: null,
+      image: '/assets/slider/BANNER_TEST2.jpg',
       ctaText: isRTL ? 'ابدأ الآن' : 'Get Started',
       ctaLink: '/register',
-      alt: isRTL ? 'انضم إلينا' : 'Join Us',
-      dimensions: '1920x1080'
+      alt: isRTL ? 'Gaming Banner' : 'Gaming Banner'
+    },
+    {
+      id: 4,
+      image: '/assets/slider/genshin_impact_banner.jpg',
+      ctaText: isRTL ? 'اكتشف المزيد' : 'Discover More',
+      ctaLink: '/genshin',
+      alt: isRTL ? 'Genshin Impact' : 'Genshin Impact'
     }
   ]
 
 
 
-  // تأثيرات الانتقال المُحسّنة بين الشرائح
+  // تأثيرات الانتقال المُحسّنة والمبسطة للديسكتوب
   const animateSlideTransition = () => {
     if (!ctaRef.current || !sliderRef.current) return
     
     const tl = gsap.timeline()
     
-    // تأثير انزلاق الشريحة مع تدوير
+    // انتقال بسيط وناعم للشريحة
     tl.to(sliderRef.current, {
-      duration: 0.4,
-      rotationY: 10,
-      scale: 0.95,
-      ease: "power2.in"
+      duration: 0.3,
+      scale: 0.98,
+      ease: "power2.out"
     })
     
-    // إخفاء الزر مع دوران
+    // إخفاء الزر بحركة ناعمة
     .to(ctaRef.current, {
-      duration: 0.3,
+      duration: 0.25,
       opacity: 0,
-      scale: 0.5,
-      rotation: 180,
+      y: 20,
       ease: "power2.in"
-    }, "-=0.2")
+    }, "-=0.1")
     
     // إعادة الشريحة لوضعها الطبيعي
     .to(sliderRef.current, {
-      duration: 0.5,
-      rotationY: 0,
-      scale: 1,
-      ease: "back.out(1.4)"
-    })
-    
-    // إظهار الزر الجديد مع تأثير انفجار
-    .to(ctaRef.current, {
-      duration: 0.6,
-      opacity: 1,
-      scale: 1,
-      rotation: 0,
-      ease: "back.out(2.5)",
-      delay: 0.1
-    }, "-=0.3")
-    
-    // تأثير نبضة متقدم
-    .to(ctaRef.current, {
       duration: 0.4,
-      scale: 1.15,
+      scale: 1,
       ease: "power2.out"
     })
+    
+    // إظهار الزر الجديد بحركة ناعمة
     .to(ctaRef.current, {
       duration: 0.4,
-      scale: 1,
-      ease: "elastic.out(1, 0.5)"
-    })
+      opacity: 1,
+      y: 0,
+      ease: "power2.out",
+      delay: 0.1
+    }, "-=0.2")
   }
 
   // التنقل التلقائي المُحسّن للـ slides
@@ -108,25 +96,24 @@ const HeroSlider = () => {
     return () => clearInterval(interval)
   }, [slides.length])
 
-  // تأثيرات البداية
+  // تأثيرات البداية المبسطة
   useEffect(() => {
     if (!ctaRef.current) return
     
-    const tl = gsap.timeline({ delay: 0.8 })
+    const tl = gsap.timeline({ delay: 0.5 })
     
-    // تأثير دخول الزر
+    // تأثير دخول بسيط وناعم للزر
     tl.from(ctaRef.current, {
-      duration: 1,
+      duration: 0.8,
       opacity: 0,
-      scale: 0.5,
-      y: 50,
-      ease: "back.out(1.7)"
+      y: 30,
+      ease: "power2.out"
     })
     
-    // تأثير نبضة ترحيبية
+    // نبضة ترحيبية خفيفة
     .to(ctaRef.current, {
       duration: 0.3,
-      scale: 1.1,
+      scale: 1.05,
       ease: "power2.out"
     })
     .to(ctaRef.current, {
@@ -155,19 +142,17 @@ const HeroSlider = () => {
                 transform: `translateX(${(index - currentSlide) * 100}%)`
               }}
             >
-              {/* منطقة الصورة العشوائية */}
-              <div className="image-placeholder">
-                <div className="placeholder-content">
-                  <div className="placeholder-icon">🖼️</div>
-                  <div className="placeholder-text">
-                    <span className="placeholder-title">
-                      {isRTL ? 'ضع صورتك هنا' : 'Place Your Image Here'}
-                    </span>
-                    <span className="placeholder-dimensions">
-                      {slide.dimensions}
-                    </span>
-                  </div>
-                </div>
+              {/* صورة الـ slide */}
+              <div className="slide-image">
+                <img 
+                  src={slide.image} 
+                  alt={slide.alt}
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    console.warn(`Failed to load image: ${slide.image}`);
+                  }}
+                />
               </div>
               
               {/* زر CTA فقط */}
