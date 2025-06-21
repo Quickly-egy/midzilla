@@ -1,6 +1,7 @@
 import { useTheme } from '../../contexts/ThemeContext'
 import { useLanguage } from '../../contexts/LanguageContext'
 import { useState, useEffect, useRef } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import SearchBar from '../SearchBar'
 import LoginModal from '../Auth/LoginModal'
 import RegisterModal from '../Auth/RegisterModal'
@@ -14,15 +15,16 @@ import './Header.css'
 const Header = () => {
   const { isDarkMode, toggleTheme } = useTheme()
   const { t, language, toggleLanguage, isRTL } = useLanguage()
+  const location = useLocation()
 
   // Authentication state
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [userEmail, setUserEmail] = useState('')
   const [showUserDropdown, setShowUserDropdown] = useState(false)
-  
+
   // Mobile menu state
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  
+
   // Ref for user menu and mobile menu
   const userMenuRef = useRef(null)
   const mobileMenuRef = useRef(null)
@@ -140,12 +142,17 @@ const Header = () => {
     setIsMobileMenuOpen(false)
   }
 
+  // Helper function to check if a link is active
+  const isActiveLink = (path) => {
+    return location.pathname === path
+  }
+
   return (
     <>
       <header className="header" dir={isRTL ? 'rtl' : 'ltr'}>
         <div className="header-container">
           {/* Mobile Menu Button */}
-          <button 
+          <button
             className={`mobile-menu-btn ${isMobileMenuOpen ? 'active' : ''}`}
             onClick={toggleMobileMenu}
             aria-label={language === 'ar' ? 'فتح القائمة' : 'Open Menu'}
@@ -171,22 +178,22 @@ const Header = () => {
 
           {/* Logo Section - Positioned based on language direction */}
           <div className="logo-section">
-            <div className="logo">
-              <img 
-                src="/assets/images/midzilla-logo.png" 
-                alt="Midzilla Logo" 
+            <Link to="/" className="logo">
+              <img
+                src="/assets/images/midzilla-logo.png"
+                alt="Midzilla Logo"
                 className="logo-image"
                 onError={(e) => {
                   e.target.style.display = 'none';
                   e.target.nextElementSibling.style.display = 'inline';
                 }}
               />
-              <span className="logo-icon-fallback" style={{display: 'none'}}>🎮</span>
+              <span className="logo-icon-fallback" style={{ display: 'none' }}>🎮</span>
               <div className="logo-text">
                 <h1 className="site-name">Midzilla</h1>
                 <p className="tagline">{t('tagline')}</p>
               </div>
-            </div>
+            </Link>
           </div>
 
           {/* Center Section - Navigation + Search */}
@@ -195,9 +202,9 @@ const Header = () => {
             <nav className="nav">
               <ul className="nav-list">
                 <li className="nav-item">
-                  <a href="#home" className="nav-link active">{t('home')}</a>
+                  <Link to="/" className={`nav-link ${isActiveLink('/') ? 'active' : ''}`}>{t('home')}</Link>
                 </li>
-                
+
                 {/* Games Dropdown */}
                 <li className="nav-item dropdown">
                   <a href="#games" className="nav-link dropdown-toggle">
@@ -205,23 +212,23 @@ const Header = () => {
                     <span className="dropdown-arrow">▼</span>
                   </a>
                   <div className="dropdown-menu">
-                    <a href="#mobile-games" className="dropdown-item">{t('mobileGames')}</a>
-                    <a href="#pc-games" className="dropdown-item">{t('pcGames')}</a>
+                    <Link to="/mobile-games" className="dropdown-item">{t('mobileGames')}</Link>
+                    <Link to="/pc-games" className="dropdown-item">{t('pcGames')}</Link>
                   </div>
                 </li>
-                
+
                 <li className="nav-item">
-                  <a href="#gift-cards" className="nav-link">{t('giftCards')}</a>
+                  <Link to="/gift-cards" className={`nav-link ${isActiveLink('/gift-cards') ? 'active' : ''}`}>{t('giftCards')}</Link>
                 </li>
-                
+
                 <li className="nav-item">
-                  <a href="#software" className="nav-link">{t('software')}</a>
+                  <Link to="/software" className={`nav-link ${isActiveLink('/software') ? 'active' : ''}`}>{t('software')}</Link>
                 </li>
-                
+
                 <li className="nav-item">
-                  <a href="#offers" className="nav-link">{t('offers')}</a>
+                  <Link to="/offers" className={`nav-link ${isActiveLink('/offers') ? 'active' : ''}`}>{t('offers')}</Link>
                 </li>
-                
+
                 {/* More Pages Dropdown */}
                 <li className="nav-item dropdown">
                   <a href="#more" className="nav-link dropdown-toggle">
@@ -229,8 +236,8 @@ const Header = () => {
                     <span className="dropdown-arrow">▼</span>
                   </a>
                   <div className="dropdown-menu">
-                    <a href="#faq" className="dropdown-item">{t('faq')}</a>
-                    <a href="#star-system" className="dropdown-item">{t('starSystem')}</a>
+                    <Link to="/faq" className="dropdown-item">{t('faq')}</Link>
+                    <Link to="/star-system" className="dropdown-item">{t('starSystem')}</Link>
                   </div>
                 </li>
               </ul>
@@ -246,8 +253,8 @@ const Header = () => {
           <div className="header-actions">
             {/* Language Toggle */}
             <div className="language-toggle-wrapper">
-              <button 
-                className={`language-toggle ${language}`} 
+              <button
+                className={`language-toggle ${language}`}
                 onClick={toggleLanguage}
                 aria-label={language === 'ar' ? 'تبديل إلى الإنجليزية' : 'Switch to Arabic'}
               >
@@ -260,8 +267,8 @@ const Header = () => {
 
             {/* Theme Toggle */}
             <div className="theme-toggle-wrapper">
-              <button 
-                className={`theme-toggle ${isDarkMode ? 'dark' : 'light'}`} 
+              <button
+                className={`theme-toggle ${isDarkMode ? 'dark' : 'light'}`}
                 onClick={toggleTheme}
                 aria-label={isDarkMode ? t('lightMode') || 'تبديل إلى الوضع المضيء' : t('darkMode') || 'تبديل إلى الوضع المظلم'}
               >
@@ -281,7 +288,7 @@ const Header = () => {
             {isLoggedIn ? (
               /* User Dropdown Menu */
               <div className="user-menu-wrapper" ref={userMenuRef}>
-                <button 
+                <button
                   className="user-menu-button"
                   onClick={toggleUserDropdown}
                   aria-label={isRTL ? 'حسابي' : 'My Account'}
@@ -292,23 +299,23 @@ const Header = () => {
                   </span>
                   <span className={`dropdown-arrow ${showUserDropdown ? 'open' : ''}`}>▼</span>
                 </button>
-                
+
                 {showUserDropdown && (
                   <div className="user-dropdown-menu">
                     <div className="user-info">
                       <span className="user-email">{userEmail}</span>
                     </div>
                     <div className="dropdown-divider"></div>
-                    <a href="#orders" className="dropdown-item">
+                    <Link to="/orders" className="dropdown-item">
                       <span className="item-icon">📦</span>
                       {isRTL ? 'طلباتي' : 'My Orders'}
-                    </a>
-                    <a href="#points" className="dropdown-item">
+                    </Link>
+                    <Link to="/points" className="dropdown-item">
                       <span className="item-icon">⭐</span>
                       {isRTL ? 'النقاط' : 'Points'}
-                    </a>
+                    </Link>
                     <div className="dropdown-divider"></div>
-                    <button 
+                    <button
                       className="dropdown-item logout-item"
                       onClick={handleLogout}
                     >
@@ -321,13 +328,13 @@ const Header = () => {
             ) : (
               /* Auth Buttons */
               <div className="auth-buttons">
-                <button 
+                <button
                   className="btn btn-outline"
                   onClick={() => openModal('login')}
                 >
                   {t('login')}
                 </button>
-                <button 
+                <button
                   className="btn btn-primary"
                   onClick={() => openModal('register')}
                 >
@@ -340,7 +347,7 @@ const Header = () => {
       </header>
 
       {/* Mobile Sidebar Menu */}
-      <div 
+      <div
         className={`mobile-sidebar ${isMobileMenuOpen ? 'open' : ''}`}
         ref={mobileMenuRef}
         dir={isRTL ? 'rtl' : 'ltr'}
@@ -348,20 +355,20 @@ const Header = () => {
         <div className="mobile-sidebar-content">
           {/* Mobile Menu Header */}
           <div className="mobile-menu-header">
-            <div className="mobile-logo">
-              <img 
-                src="/assets/images/midzilla-logo.png" 
-                alt="Midzilla Logo" 
+            <Link to="/" className="mobile-logo">
+              <img
+                src="/assets/images/midzilla-logo.png"
+                alt="Midzilla Logo"
                 className="mobile-logo-image"
                 onError={(e) => {
                   e.target.style.display = 'none';
                   e.target.nextElementSibling.style.display = 'inline';
                 }}
               />
-              <span className="mobile-logo-fallback" style={{display: 'none'}}>🎮</span>
+              <span className="mobile-logo-fallback" style={{ display: 'none' }}>🎮</span>
               <span className="mobile-logo-text">Midzilla</span>
-            </div>
-            <button 
+            </Link>
+            <button
               className="mobile-menu-close"
               onClick={() => setIsMobileMenuOpen(false)}
               aria-label={language === 'ar' ? 'إغلاق القائمة' : 'Close Menu'}
@@ -381,65 +388,65 @@ const Header = () => {
               <h3 className="mobile-nav-title">{isRTL ? 'الصفحات' : 'Pages'}</h3>
               <ul className="mobile-nav-list">
                 <li className="mobile-nav-item">
-                  <a href="#home" className="mobile-nav-link active" onClick={handleMobileNavClick}>
+                  <Link to="/" className={`mobile-nav-link ${isActiveLink('/') ? 'active' : ''}`} onClick={handleMobileNavClick}>
                     <span className="nav-icon">🏠</span>
                     {t('home')}
-                  </a>
+                  </Link>
                 </li>
-                
+
                 <li className="mobile-nav-item">
                   <span className="mobile-nav-category">{t('games')}</span>
                   <ul className="mobile-nav-submenu">
                     <li>
-                      <a href="#mobile-games" className="mobile-nav-link" onClick={handleMobileNavClick}>
+                      <Link to="/mobile-games" className="mobile-nav-link" onClick={handleMobileNavClick}>
                         <span className="nav-icon">📱</span>
                         {t('mobileGames')}
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="#pc-games" className="mobile-nav-link" onClick={handleMobileNavClick}>
+                      <Link to="/pc-games" className="mobile-nav-link" onClick={handleMobileNavClick}>
                         <span className="nav-icon">💻</span>
                         {t('pcGames')}
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </li>
-                
+
                 <li className="mobile-nav-item">
-                  <a href="#gift-cards" className="mobile-nav-link" onClick={handleMobileNavClick}>
+                  <Link to="/gift-cards" className={`mobile-nav-link ${isActiveLink('/gift-cards') ? 'active' : ''}`} onClick={handleMobileNavClick}>
                     <span className="nav-icon">🎁</span>
                     {t('giftCards')}
-                  </a>
+                  </Link>
                 </li>
-                
+
                 <li className="mobile-nav-item">
-                  <a href="#software" className="mobile-nav-link" onClick={handleMobileNavClick}>
+                  <Link to="/software" className={`mobile-nav-link ${isActiveLink('/software') ? 'active' : ''}`} onClick={handleMobileNavClick}>
                     <span className="nav-icon">💿</span>
                     {t('software')}
-                  </a>
+                  </Link>
                 </li>
-                
+
                 <li className="mobile-nav-item">
-                  <a href="#offers" className="mobile-nav-link" onClick={handleMobileNavClick}>
+                  <Link to="/offers" className={`mobile-nav-link ${isActiveLink('/offers') ? 'active' : ''}`} onClick={handleMobileNavClick}>
                     <span className="nav-icon">🔥</span>
                     {t('offers')}
-                  </a>
+                  </Link>
                 </li>
-                
+
                 <li className="mobile-nav-item">
                   <span className="mobile-nav-category">{t('more')}</span>
                   <ul className="mobile-nav-submenu">
                     <li>
-                      <a href="#faq" className="mobile-nav-link" onClick={handleMobileNavClick}>
+                      <Link to="/faq" className={`mobile-nav-link ${isActiveLink('/faq') ? 'active' : ''}`} onClick={handleMobileNavClick}>
                         <span className="nav-icon">❓</span>
                         {t('faq')}
-                      </a>
+                      </Link>
                     </li>
                     <li>
-                      <a href="#star-system" className="mobile-nav-link" onClick={handleMobileNavClick}>
+                      <Link to="/star-system" className={`mobile-nav-link ${isActiveLink('/star-system') ? 'active' : ''}`} onClick={handleMobileNavClick}>
                         <span className="nav-icon">⭐</span>
                         {t('starSystem')}
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </li>
@@ -452,16 +459,16 @@ const Header = () => {
                 <h3 className="mobile-nav-title">{isRTL ? 'حسابي' : 'My Account'}</h3>
                 <ul className="mobile-nav-list">
                   <li className="mobile-nav-item">
-                    <a href="#orders" className="mobile-nav-link" onClick={handleMobileNavClick}>
+                    <Link to="/orders" className="mobile-nav-link" onClick={handleMobileNavClick}>
                       <span className="nav-icon">📦</span>
                       {isRTL ? 'طلباتي' : 'My Orders'}
-                    </a>
+                    </Link>
                   </li>
                   <li className="mobile-nav-item">
-                    <a href="#points" className="mobile-nav-link" onClick={handleMobileNavClick}>
+                    <Link to="/points" className="mobile-nav-link" onClick={handleMobileNavClick}>
                       <span className="nav-icon">⭐</span>
                       {isRTL ? 'النقاط' : 'Points'}
-                    </a>
+                    </Link>
                   </li>
                   <li className="mobile-nav-item">
                     <button className="mobile-nav-link logout-btn" onClick={handleLogout}>
@@ -477,13 +484,13 @@ const Header = () => {
             {!isLoggedIn && (
               <div className="mobile-nav-section">
                 <div className="mobile-auth-buttons">
-                  <button 
+                  <button
                     className="btn btn-outline mobile-auth-btn"
                     onClick={() => openModal('login')}
                   >
                     {t('login')}
                   </button>
-                  <button 
+                  <button
                     className="btn btn-primary mobile-auth-btn"
                     onClick={() => openModal('register')}
                   >
@@ -502,7 +509,7 @@ const Header = () => {
                     <span className="setting-icon">🌍</span>
                     {isRTL ? 'اللغة' : 'Language'}
                   </label>
-                  <button 
+                  <button
                     className={`mobile-language-toggle ${language}`}
                     onClick={toggleLanguage}
                   >
@@ -510,13 +517,13 @@ const Header = () => {
                     <span className={`lang-option ${language === 'en' ? 'active' : ''}`}>EN</span>
                   </button>
                 </div>
-                
+
                 <div className="mobile-setting-item">
                   <label className="mobile-setting-label">
                     <span className="setting-icon">{isDarkMode ? '🌙' : '☀️'}</span>
                     {isDarkMode ? (t('lightMode') || 'الوضع المضيء') : (t('darkMode') || 'الوضع المظلم')}
                   </label>
-                  <button 
+                  <button
                     className={`mobile-theme-toggle ${isDarkMode ? 'dark' : 'light'}`}
                     onClick={toggleTheme}
                   >
@@ -533,7 +540,7 @@ const Header = () => {
 
       {/* Mobile Sidebar Overlay */}
       {isMobileMenuOpen && (
-        <div 
+        <div
           className="mobile-sidebar-overlay"
           onClick={() => setIsMobileMenuOpen(false)}
         ></div>

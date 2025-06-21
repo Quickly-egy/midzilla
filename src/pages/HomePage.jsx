@@ -1,5 +1,4 @@
 import { useLanguage } from '../contexts/LanguageContext'
-import Header from '../components/Header'
 import { HeroSlider } from '../components/HomePage'
 import TrustIndicators from '../components/HomePage/TrustIndicators'
 import FeaturedCategories from '../components/HomePage/FeaturedCategories'
@@ -14,8 +13,7 @@ const HomePage = () => {
   const { isRTL } = useLanguage()
 
   return (
-    <div className="home-page-wrapper" dir={isRTL ? 'rtl' : 'ltr'}>
-      <Header />
+    <div className="home-page-content" dir={isRTL ? 'rtl' : 'ltr'}>
       <HeroSlider />
       <TrustIndicators />
       <FeaturedCategories />

@@ -1,7 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTheme } from '../contexts/ThemeContext';
-import Header from '../components/Header';
 import './FAQPage.css';
 
 const FAQPage = () => {
@@ -123,11 +122,9 @@ const FAQPage = () => {
 
   return (
     <div className={`faq-page ${isRTL ? 'rtl' : 'ltr'} ${isDarkMode ? 'dark' : 'light'}`} dir={isRTL ? 'rtl' : 'ltr'}>
-      <Header />
-      
       <main className="faq-main">
         <div className="faq-page-container">
-          
+
           {/* Hero Section */}
           <section className="faq-hero">
             <div className="hero-content">
@@ -137,7 +134,7 @@ const FAQPage = () => {
               </div>
               <h1 className="hero-title">{t('faqPageTitle')}</h1>
               <p className="hero-subtitle">{t('faqPageSubtitle')}</p>
-              
+
               {/* Search Bar */}
               <div className="search-container">
                 <div className="search-wrapper">
@@ -186,12 +183,12 @@ const FAQPage = () => {
             <div className="faq-list">
               {filteredFAQs.length > 0 ? (
                 filteredFAQs.map((faq) => (
-                  <div 
-                    key={faq.id} 
+                  <div
+                    key={faq.id}
                     className={`faq-item ${openFAQ === faq.id ? 'active' : ''}`}
                   >
-                    <div 
-                      className="faq-question" 
+                    <div
+                      className="faq-question"
                       onClick={() => toggleFAQ(faq.id)}
                       role="button"
                       tabIndex={0}
@@ -211,7 +208,7 @@ const FAQPage = () => {
                         </span>
                       </div>
                     </div>
-                    
+
                     <div className={`faq-answer ${openFAQ === faq.id ? 'expanded' : ''}`}>
                       <div className="answer-content">
                         <p>{faq.answer}</p>
@@ -226,7 +223,7 @@ const FAQPage = () => {
                     {isRTL ? 'لم نجد أي نتائج' : 'No results found'}
                   </h3>
                   <p className="no-results-text">
-                    {isRTL 
+                    {isRTL
                       ? 'جرب تغيير كلمات البحث أو اختيار تصنيف مختلف'
                       : 'Try changing your search terms or selecting a different category'
                     }
@@ -244,7 +241,7 @@ const FAQPage = () => {
                 {isRTL ? 'لم تجد إجابة سؤالك؟' : 'Didn\'t find the answer to your question?'}
               </h3>
               <p className="contact-text">
-                {isRTL 
+                {isRTL
                   ? 'فريق خدمة العملاء جاهز لمساعدتك في أي وقت'
                   : 'Our customer service team is ready to help you anytime'
                 }

@@ -13,18 +13,10 @@
   position: relative;
   display: flex;
   align-items: center;
-  background: var(--card-bg);
-  border: 2px solid var(--border-color);
-  border-radius: 25px;
-  overflow: hidden;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-.search-input-wrapper:focus-within {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1), 0 4px 12px rgba(0, 0, 0, 0.1);
-}
+.search-input-wrapper:focus-within {}
 
 /* Search Input */
 .search-input {
@@ -62,6 +54,8 @@
 /* Search Button */
 .search-button {
   position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   width: 40px;
   height: 40px;
   border: none;
@@ -89,15 +83,15 @@
 }
 
 .search-button:hover {
-  background: var(--secondary-color);
-  transform: scale(1.05);
+  transform: translateY(-50%) scale(1.05);
   box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
 }
 
 .search-button:active {
-  transform: scale(0.95);
+  transform: translateY(-50%) scale(0.95);
 }
 
+/* Search Icon - Centered */
 .search-icon {
   width: 20px;
   height: 20px;
@@ -111,15 +105,22 @@
   z-index: 10;
   min-width: 20px;
   min-height: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .search-button:hover .search-icon {
-  transform: scale(1.1);
+  transform: translate(-50%, -50%) scale(1.1);
 }
 
 /* إذا لم تظهر أيقونة SVG، استخدم النسخة الاحتياطية */
 .search-icon-fallback {
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-size: 18px;
   color: white !important;
   display: none;
@@ -132,6 +133,7 @@
   .search-icon {
     display: none !important;
   }
+
   .search-icon-fallback {
     display: block !important;
   }
@@ -159,6 +161,7 @@
     opacity: 0;
     transform: translateY(-10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -268,33 +271,33 @@
     width: 100%;
     margin-right: -50% !important;
   }
-  
+
   .search-input {
     font-size: 14px;
     padding: 11px 18px;
   }
-  
+
   .search-bar-container[dir="rtl"] .search-input {
     padding-right: 18px;
     padding-left: 48px;
   }
-  
+
   .search-bar-container[dir="ltr"] .search-input {
     padding-left: 18px;
     padding-right: 48px;
   }
-  
+
   .search-button {
     width: 38px;
     height: 38px;
     color: white !important;
   }
-  
+
   .search-icon {
-    font-size: 15px;
-    color: white !important;
-    fill: white !important;
-    stroke: white !important;
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    min-height: 18px;
   }
 }
 
@@ -305,47 +308,47 @@
     width: 100%;
     margin-right: 0 !important;
   }
-  
+
   .search-input {
     font-size: 14px;
     padding: 10px 16px;
   }
-  
+
   .search-bar-container[dir="rtl"] .search-input {
     padding-right: 16px;
     padding-left: 45px;
   }
-  
+
   .search-bar-container[dir="ltr"] .search-input {
     padding-left: 16px;
     padding-right: 45px;
   }
-  
+
   .search-button {
     width: 36px;
     height: 36px;
     color: white !important;
   }
-  
+
   .search-icon {
-    font-size: 14px;
-    color: white !important;
-    fill: white !important;
-    stroke: white !important;
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    min-height: 18px;
   }
-  
+
   .suggestion-item {
     padding: 10px 12px;
   }
-  
+
   .suggestion-name {
     font-size: 13px;
   }
-  
+
   .suggestion-category {
     font-size: 11px;
   }
-  
+
   .suggestion-icon {
     font-size: 18px;
     width: 30px;
@@ -359,53 +362,53 @@
     width: 100%;
     margin-right: 0 !important;
   }
-  
+
   .search-input {
     font-size: 13px;
     padding: 9px 14px;
   }
-  
+
   .search-bar-container[dir="rtl"] .search-input {
     padding-right: 14px;
     padding-left: 42px;
   }
-  
+
   .search-bar-container[dir="ltr"] .search-input {
     padding-left: 14px;
     padding-right: 42px;
   }
-  
+
   .search-button {
     width: 34px;
     height: 34px;
     color: white !important;
   }
-  
+
   .search-icon {
-    font-size: 13px;
-    color: white !important;
-    fill: white !important;
-    stroke: white !important;
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    min-height: 16px;
   }
-  
+
   .suggestion-item {
     padding: 9px 10px;
   }
-  
+
   .suggestion-name {
     font-size: 12px;
   }
-  
+
   .suggestion-category {
     font-size: 10px;
   }
-  
+
   .suggestion-icon {
     font-size: 16px;
     width: 28px;
     height: 28px;
   }
-  
+
   .suggestions-dropdown {
     max-height: 250px;
   }
@@ -417,49 +420,49 @@
     font-size: 12px;
     padding: 8px 12px;
   }
-  
+
   .search-bar-container[dir="rtl"] .search-input {
     padding-right: 12px;
     padding-left: 38px;
   }
-  
+
   .search-bar-container[dir="ltr"] .search-input {
     padding-left: 12px;
     padding-right: 38px;
   }
-  
+
   .search-button {
     width: 30px;
     height: 30px;
     color: white !important;
   }
-  
+
   .search-icon {
-    font-size: 12px;
-    color: white !important;
-    fill: white !important;
-    stroke: white !important;
+    width: 14px;
+    height: 14px;
+    min-width: 14px;
+    min-height: 14px;
   }
-  
+
   .suggestion-item {
     padding: 8px 10px;
     gap: 8px;
   }
-  
+
   .suggestion-name {
     font-size: 11px;
   }
-  
+
   .suggestion-category {
     font-size: 9px;
   }
-  
+
   .suggestion-icon {
     font-size: 14px;
     width: 24px;
     height: 24px;
   }
-  
+
   .suggestions-dropdown {
     max-height: 200px;
   }
@@ -482,4 +485,4 @@
 .mobile-sidebar[dir="ltr"] .search-bar-container .search-button {
   right: 4px !important;
   left: auto !important;
-} 
+}

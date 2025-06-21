@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from './contexts/ThemeContext'
 import { LanguageProvider } from './contexts/LanguageContext'
 import { CurrencyProvider } from './contexts/CurrencyContext'
 import Loader from './components/Loader/Loader'
+import Layout from './components/Layout'
 import HomePage from './pages/HomePage'
-import { CartSidebar } from './components/Cart'
-import FavoritesSidebar from './components/Favorites/FavoritesSidebar'
-import CurrencySelector from './components/CurrencySelector/CurrencySelector'
+import FAQPage from './pages/FAQPage'
 import './styles/themes.css'
 import './styles/language.css'
 
@@ -43,10 +43,22 @@ function App() {
     <LanguageProvider>
       <ThemeProvider>
         <CurrencyProvider>
-          <HomePage />
-          <CartSidebar />
-          <FavoritesSidebar />
-          <CurrencySelector />
+          <Router>
+            <Layout>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/faq" element={<FAQPage />} />
+                <Route path="/mobile-games" element={<HomePage />} />
+                <Route path="/pc-games" element={<HomePage />} />
+                <Route path="/gift-cards" element={<HomePage />} />
+                <Route path="/software" element={<HomePage />} />
+                <Route path="/offers" element={<HomePage />} />
+                <Route path="/star-system" element={<HomePage />} />
+                <Route path="/orders" element={<HomePage />} />
+                <Route path="/points" element={<HomePage />} />
+              </Routes>
+            </Layout>
+          </Router>
         </CurrencyProvider>
       </ThemeProvider>
     </LanguageProvider>
