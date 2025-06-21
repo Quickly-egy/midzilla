@@ -4,6 +4,7 @@ import MainPage from '../components/MainPage'
 import { HeroSlider } from '../components/HomePage'
 import TrustIndicators from '../components/HomePage/TrustIndicators'
 import FeaturedCategories from '../components/HomePage/FeaturedCategories'
+import FeaturedProducts from '../components/HomePage/FeaturedProducts'
 import './HomePage.css'
 
 const HomePage = () => {
@@ -15,6 +16,7 @@ const HomePage = () => {
       <HeroSlider />
       <TrustIndicators />
       <FeaturedCategories />
+      <FeaturedProducts />
       <MainPage />
     </div>
   )
