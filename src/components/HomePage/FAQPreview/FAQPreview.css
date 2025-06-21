@@ -224,6 +224,8 @@
 /* CTA Button */
 .faq-footer {
   text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
 }
 
 .faq-cta-button {

@@ -7,6 +7,9 @@ import FAQPreview from '../components/HomePage/FAQPreview'
 import CustomerReviews from '../components/HomePage/CustomerReviews'
 import MobileAppPromo from '../components/HomePage/MobileAppPromo'
 import StarsSystem from '../components/HomePage/StarsSystem'
+import PaymentMethods from '../components/HomePage/PaymentMethods'
+import Newsletter from '../components/HomePage/Newsletter'
+import Footer from '../components/Footer'
 import './HomePage.css'
 
 const HomePage = () => {
@@ -22,6 +25,9 @@ const HomePage = () => {
       <MobileAppPromo />
       <StarsSystem />
       <FAQPreview />
+      <PaymentMethods />
+      <Newsletter />
+      <Footer />
     </div>
   )
 }

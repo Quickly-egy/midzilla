@@ -1,6 +1,11 @@
 import React, { useState, useMemo } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useTheme } from '../contexts/ThemeContext';
+<<<<<<< HEAD
+=======
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+>>>>>>> fb8ede5f9485c2aebf78bb4ae7461d761de9e870
 import './FAQPage.css';
 
 const FAQPage = () => {
@@ -257,6 +262,8 @@ const FAQPage = () => {
 
         </div>
       </main>
+      
+      <Footer />
     </div>
   );
 };
