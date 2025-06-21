@@ -114,6 +114,94 @@ const translations = {
     faqCategoryAccount: 'الحساب والنجوم',
     faqCategorySecurity: 'الأمان والحماية',
     
+    // Payment Methods
+    paymentMethods: {
+      badge: 'طرق الدفع',
+      title: 'طرق الدفع الآمنة',
+      subtitle: 'نوفر خيارات دفع متعددة وآمنة لضمان أن معاملاتك آمنة ومريحة، سواء كنت في مصر أو أي دولة أخرى.',
+      purpose: {
+        title: 'الهدف من القسم',
+        description: 'يريد الزوار معرفة أن الموقع آمن في عمليات الدفع، ولديهم مرونة في اختيار وسيلة الدفع وتسليمهم، سواء كانوا داخل مصر أو في أي دولة عربية أو أجنبية.',
+        features: [
+          'اختر طريقة الدفع المناسبة لديك',
+          'دفع آمن وسهل من أي مكان في العالم',
+          'طرق دفع متنوعة تناسب احتياجك'
+        ]
+      },
+      methods: {
+        title: 'وسائل الدفع المدعومة',
+        list: [
+          {
+            icon: '💳',
+            name: 'Visa / MasterCard',
+            description: 'بطاقات ميزة (في حال تم ربطها)'
+          },
+          {
+            icon: '🏪',
+            name: 'الدفع المحلي',
+            description: 'الدفع من خلال شركاء محليين مثل فوري'
+          },
+          {
+            icon: '🏦',
+            name: 'التحويل البنكي',
+            description: 'التحويل البنكي اليدوي (أو لبعض الدول)'
+          },
+          {
+            icon: '📱',
+            name: 'الدفع عند التواصل',
+            description: 'الدفع عند التواصل (في حالة الدفع اليدوي أو المساعدة من الدعم)'
+          }
+        ]
+      },
+      security: {
+        title: 'خيارات تقنية قابلة للتطوير لاحقاً',
+        features: [
+          {
+            name: 'عرض الشروط الخاصة بكل طريقة دفع (مثلاً: عمولة - وقت الاستلام)',
+            description: ''
+          },
+          {
+            name: 'تفعيل عرض الوسائل المتاحة فقط حسب دولة الزائر (لو الموقع يدعم geo-location)',
+            description: ''
+          },
+          {
+            name: 'عرض تنبيه بسيط: "إذا لم تجد وسيلة مناسبة، تواصل معنا عبر الشات"',
+            description: ''
+          }
+        ]
+      },
+      contactAlert: 'إذا لم تجد وسيلة مناسبة، تواصل معنا عبر الشات'
+    },
+
+    // Newsletter
+    newsletter: {
+      badge: 'الاشتراك في النشرة البريدية',
+      title: 'متوتش العروض الحصرية',
+      subtitle: 'سجل إيميلك وخليك أول واحد يعرف كل جديد',
+      purpose: {
+        title: 'الهدف من القسم',
+        description: 'يساعد في بناء قاعدة عملاء مهتمين، ويفتح باب للتواصل المباشر والمجاني مع الجمهور.'
+      },
+      features: {
+        title: 'عنوان جذاب (Heading)',
+        examples: [
+          'متوتش العروض الحصرية',
+          'سجل إيميلك وخليك أول واحد يعرف كل جديد',
+          'اشترك في نشرتنا البريدية ووصلك كل العروض أول بأول'
+        ]
+      },
+      form: {
+        title: 'حقل الإدخال (Input Field)',
+        description: 'مكان لكتابة البريد الإلكتروني',
+        placeholder: 'أدخل بريدك الإلكتروني',
+        button: 'اشترك',
+        success: 'تم الاشتراك بنجاح! شكراً لك'
+      },
+      assurance: {
+        description: 'خصوصيتك تهمنا — مش هنشارك بياناتك مع أي طرف تالت'
+      }
+    },
+
     // Common
     loading: 'جاري التحميل...',
     error: 'حدث خطأ',
@@ -232,6 +320,94 @@ const translations = {
     faqCategoryAccount: 'Account & Stars',
     faqCategorySecurity: 'Security & Protection',
     
+    // Payment Methods
+    paymentMethods: {
+      badge: 'Payment Methods',
+      title: 'Secure Payment Methods',
+      subtitle: 'We offer multiple secure payment options to ensure your transactions are safe and convenient, whether you\'re in Egypt or any other country.',
+      purpose: {
+        title: 'Section Purpose',
+        description: 'Visitors want to know that the site is secure in payment operations, and they have flexibility in choosing payment methods and receiving them, whether they are inside Egypt or in any Arab or foreign country.',
+        features: [
+          'Choose your preferred payment method',
+          'Secure and easy payment from anywhere in the world',
+          'Multiple payment options to suit your needs'
+        ]
+      },
+      methods: {
+        title: 'Supported Payment Methods',
+        list: [
+          {
+            icon: '💳',
+            name: 'Visa / MasterCard',
+            description: 'Credit cards (if linked)'
+          },
+          {
+            icon: '🏪',
+            name: 'Local Payment',
+            description: 'Payment through local partners such as Fawry'
+          },
+          {
+            icon: '🏦',
+            name: 'Bank Transfer',
+            description: 'Manual bank transfer (or for some countries)'
+          },
+          {
+            icon: '📱',
+            name: 'Payment on Communication',
+            description: 'Payment on communication (in case of manual payment or support assistance)'
+          }
+        ]
+      },
+      security: {
+        title: 'Advanced Security Features',
+        features: [
+          {
+            name: 'Display specific terms for each payment method (Example: commission - delivery time)',
+            description: ''
+          },
+          {
+            name: 'Enable available methods only according to the visitor\'s country (if the site supports geo-location)',
+            description: ''
+          },
+          {
+            name: 'Display simple warning: "If you find a suitable method, contact us via chat"',
+            description: ''
+          }
+        ]
+      },
+      contactAlert: 'If you can\'t find a suitable method, contact us via chat'
+    },
+
+    // Newsletter
+    newsletter: {
+      badge: 'Newsletter Subscription',
+      title: 'Don\'t Miss Exclusive Offers',
+      subtitle: 'Register your email and be the first to know everything new',
+      purpose: {
+        title: 'Section Purpose',
+        description: 'Helps build an interested customer base and opens the door for direct and free communication with the audience.'
+      },
+      features: {
+        title: 'Attractive Heading',
+        examples: [
+          'Don\'t miss exclusive offers',
+          'Register your email and be the first to know everything new',
+          'Subscribe to our newsletter and get all offers first'
+        ]
+      },
+      form: {
+        title: 'Input Field',
+        description: 'Place to write the email',
+        placeholder: 'Enter your email',
+        button: 'Subscribe',
+        success: 'Successfully subscribed! Thank you'
+      },
+      assurance: {
+        description: 'Your privacy matters to us — we won\'t share your data with any third party'
+      }
+    },
+
     // Common
     loading: 'Loading...',
     error: 'An error occurred',
@@ -303,6 +479,7 @@ export const LanguageProvider = ({ children }) => {
     setLanguage,
     toggleLanguage,
     t,
+    translations: translations[language],
     isRTL: language === 'ar',
     isArabic: language === 'ar',
     isEnglish: language === 'en'
