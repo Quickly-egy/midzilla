@@ -1,146 +1,256 @@
-import { useState, useEffect, useRef } from 'react'
-import { useLanguage } from '../../contexts/LanguageContext'
-import './SearchBar.css'
+import { useState, useEffect, useRef } from "react";
+import { useLanguage } from "../../contexts/LanguageContext";
+import "./SearchBar.css";
 
 const SearchBar = () => {
-  const { t, isRTL } = useLanguage()
-  const [searchQuery, setSearchQuery] = useState('')
-  const [suggestions, setSuggestions] = useState([])
-  const [showSuggestions, setShowSuggestions] = useState(false)
-  const [selectedIndex, setSelectedIndex] = useState(-1)
-  const searchRef = useRef(null)
-  const suggestionsRef = useRef(null)
+  const { t, isRTL } = useLanguage();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
+  const searchRef = useRef(null);
+  const suggestionsRef = useRef(null);
 
   // قائمة المنتجات والألعاب للاقتراحات
   const gamesSuggestions = [
-    { id: 1, name: 'PUBG Mobile', category: 'mobile', nameEn: 'PUBG Mobile', nameAr: 'ببجي موبايل' },
-    { id: 2, name: 'Free Fire', category: 'mobile', nameEn: 'Free Fire', nameAr: 'فري فاير' },
-    { id: 3, name: 'Call of Duty Mobile', category: 'mobile', nameEn: 'Call of Duty Mobile', nameAr: 'كول أوف ديوتي موبايل' },
-    { id: 4, name: 'FIFA Mobile', category: 'mobile', nameEn: 'FIFA Mobile', nameAr: 'فيفا موبايل' },
-    { id: 5, name: 'Minecraft', category: 'pc', nameEn: 'Minecraft', nameAr: 'ماين كرافت' },
-    { id: 6, name: 'Fortnite', category: 'pc', nameEn: 'Fortnite', nameAr: 'فورتنايت' },
-    { id: 7, name: 'Valorant', category: 'pc', nameEn: 'Valorant', nameAr: 'فالورانت' },
-    { id: 8, name: 'League of Legends', category: 'pc', nameEn: 'League of Legends', nameAr: 'ليج أوف ليجندز' },
-    { id: 9, name: 'Steam Gift Card', category: 'gift', nameEn: 'Steam Gift Card', nameAr: 'بطاقة ستيم' },
-    { id: 10, name: 'Google Play Card', category: 'gift', nameEn: 'Google Play Card', nameAr: 'بطاقة جوجل بلاي' },
-    { id: 11, name: 'iTunes Card', category: 'gift', nameEn: 'iTunes Card', nameAr: 'بطاقة آيتونز' },
-    { id: 12, name: 'PlayStation Plus', category: 'gift', nameEn: 'PlayStation Plus', nameAr: 'بلايستيشن بلس' },
-  ]
+    {
+      id: 1,
+      name: "PUBG Mobile",
+      category: "mobile",
+      nameEn: "PUBG Mobile",
+      nameAr: "ببجي موبايل",
+    },
+    {
+      id: 2,
+      name: "Free Fire",
+      category: "mobile",
+      nameEn: "Free Fire",
+      nameAr: "فري فاير",
+    },
+    {
+      id: 3,
+      name: "Call of Duty Mobile",
+      category: "mobile",
+      nameEn: "Call of Duty Mobile",
+      nameAr: "كول أوف ديوتي موبايل",
+    },
+    {
+      id: 4,
+      name: "FIFA Mobile",
+      category: "mobile",
+      nameEn: "FIFA Mobile",
+      nameAr: "فيفا موبايل",
+    },
+    {
+      id: 5,
+      name: "Minecraft",
+      category: "pc",
+      nameEn: "Minecraft",
+      nameAr: "ماين كرافت",
+    },
+    {
+      id: 6,
+      name: "Fortnite",
+      category: "pc",
+      nameEn: "Fortnite",
+      nameAr: "فورتنايت",
+    },
+    {
+      id: 7,
+      name: "Valorant",
+      category: "pc",
+      nameEn: "Valorant",
+      nameAr: "فالورانت",
+    },
+    {
+      id: 8,
+      name: "League of Legends",
+      category: "pc",
+      nameEn: "League of Legends",
+      nameAr: "ليج أوف ليجندز",
+    },
+    {
+      id: 9,
+      name: "Steam Gift Card",
+      category: "gift",
+      nameEn: "Steam Gift Card",
+      nameAr: "بطاقة ستيم",
+    },
+    {
+      id: 10,
+      name: "Google Play Card",
+      category: "gift",
+      nameEn: "Google Play Card",
+      nameAr: "بطاقة جوجل بلاي",
+    },
+    {
+      id: 11,
+      name: "iTunes Card",
+      category: "gift",
+      nameEn: "iTunes Card",
+      nameAr: "بطاقة آيتونز",
+    },
+    {
+      id: 12,
+      name: "PlayStation Plus",
+      category: "gift",
+      nameEn: "PlayStation Plus",
+      nameAr: "بلايستيشن بلس",
+    },
+  ];
 
   // البحث والاقتراحات
   useEffect(() => {
     if (searchQuery.trim().length > 0) {
-      const filtered = gamesSuggestions.filter(item => {
-        const searchLower = searchQuery.toLowerCase()
-        const nameToSearch = isRTL ? item.nameAr : item.nameEn
-        return nameToSearch.toLowerCase().includes(searchLower) ||
-               item.nameEn.toLowerCase().includes(searchLower) ||
-               item.nameAr.toLowerCase().includes(searchLower)
-      })
-      setSuggestions(filtered.slice(0, 6)) // أظهر أول 6 نتائج
-      setShowSuggestions(true)
-      setSelectedIndex(-1)
+      const filtered = gamesSuggestions.filter((item) => {
+        const searchLower = searchQuery.toLowerCase();
+        const nameToSearch = isRTL ? item.nameAr : item.nameEn;
+        return (
+          nameToSearch.toLowerCase().includes(searchLower) ||
+          item.nameEn.toLowerCase().includes(searchLower) ||
+          item.nameAr.toLowerCase().includes(searchLower)
+        );
+      });
+      setSuggestions(filtered.slice(0, 6)); // أظهر أول 6 نتائج
+      setShowSuggestions(true);
+      setSelectedIndex(-1);
     } else {
-      setSuggestions([])
-      setShowSuggestions(false)
+      setSuggestions([]);
+      setShowSuggestions(false);
     }
-  }, [searchQuery, isRTL])
+  }, [searchQuery, isRTL]);
 
   // التعامل مع الكيبورد
   const handleKeyDown = (e) => {
-    if (!showSuggestions) return
+    if (!showSuggestions) return;
 
     switch (e.key) {
-      case 'ArrowDown':
-        e.preventDefault()
-        setSelectedIndex(prev => 
+      case "ArrowDown":
+        e.preventDefault();
+        setSelectedIndex((prev) =>
           prev < suggestions.length - 1 ? prev + 1 : prev
-        )
-        break
-      case 'ArrowUp':
-        e.preventDefault()
-        setSelectedIndex(prev => prev > 0 ? prev - 1 : -1)
-        break
-      case 'Enter':
-        e.preventDefault()
+        );
+        break;
+      case "ArrowUp":
+        e.preventDefault();
+        setSelectedIndex((prev) => (prev > 0 ? prev - 1 : -1));
+        break;
+      case "Enter":
+        e.preventDefault();
         if (selectedIndex >= 0) {
-          handleSuggestionClick(suggestions[selectedIndex])
+          handleSuggestionClick(suggestions[selectedIndex]);
         } else {
-          handleSearch()
+          handleSearch();
         }
-        break
-      case 'Escape':
-        setShowSuggestions(false)
-        setSelectedIndex(-1)
-        break
+        break;
+      case "Escape":
+        setShowSuggestions(false);
+        setSelectedIndex(-1);
+        break;
     }
-  }
+  };
 
   // التعامل مع النقر على اقتراح
   const handleSuggestionClick = (suggestion) => {
-    const name = isRTL ? suggestion.nameAr : suggestion.nameEn
-    setSearchQuery(name)
-    setShowSuggestions(false)
-    setSelectedIndex(-1)
+    const name = isRTL ? suggestion.nameAr : suggestion.nameEn;
+    setSearchQuery(name);
+    setShowSuggestions(false);
+    setSelectedIndex(-1);
     // هنا يمكن إضافة منطق التنقل للمنتج
-    console.log('Selected:', suggestion)
-  }
+    console.log("Selected:", suggestion);
+  };
 
   // تنفيذ البحث
   const handleSearch = () => {
     if (searchQuery.trim()) {
-      console.log('Searching for:', searchQuery)
+      console.log("Searching for:", searchQuery);
       // هنا يمكن إضافة منطق البحث الفعلي
-      setShowSuggestions(false)
+      setShowSuggestions(false);
     }
-  }
+  };
 
   // إخفاء الاقتراحات عند النقر خارجها
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (searchRef.current && !searchRef.current.contains(event.target)) {
-        setShowSuggestions(false)
-        setSelectedIndex(-1)
+        setShowSuggestions(false);
+        setSelectedIndex(-1);
       }
-    }
+    };
 
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [])
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   // أيقونة الفئة
   const getCategoryIcon = (category) => {
     switch (category) {
-      case 'mobile': return '📱'
-      case 'pc': return '💻'
-      case 'gift': return '🎁'
-      default: return '🎮'
+      case "mobile":
+        return "📱";
+      case "pc":
+        return "💻";
+      case "gift":
+        return "🎁";
+      default:
+        return "🎮";
     }
-  }
+  };
 
   return (
-    <div className="search-bar-container" ref={searchRef} dir={isRTL ? 'rtl' : 'ltr'}>
+    <div
+      className="search-bar-container"
+      ref={searchRef}
+      dir={isRTL ? "rtl" : "ltr"}
+    >
       <div className="search-input-wrapper">
         <input
           type="text"
           className="search-input"
-          placeholder={t('searchPlaceholder')}
+          placeholder={t("searchPlaceholder")}
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           onKeyDown={handleKeyDown}
           onFocus={() => searchQuery && setShowSuggestions(true)}
         />
-        <button 
+        <button
           className="search-button"
           onClick={handleSearch}
-          aria-label={t('searchButton')}
+          aria-label={t("searchButton")}
         >
-          <svg className="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="11" cy="11" r="8" stroke="white" strokeWidth="3" fill="none"/>
-            <path d="m21 21-4.35-4.35" stroke="white" strokeWidth="3" strokeLinecap="round"/>
+          <svg
+            className="search-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle
+              cx="11"
+              cy="11"
+              r="8"
+              stroke="white"
+              strokeWidth="3"
+              fill="none"
+            />
+            <path
+              d="m21 21-4.35-4.35"
+              stroke="white"
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
           </svg>
+
           {/* نسخة احتياطية نصية */}
-          <span className="search-icon-fallback" style={{position: 'absolute', fontSize: '18px', color: 'white', display: 'none'}}>🔍</span>
+          <span
+            className="search-icon-fallback"
+            style={{
+              position: "absolute",
+              fontSize: "18px",
+              color: "white",
+              display: "none",
+            }}
+          >
+            🔍
+          </span>
         </button>
       </div>
 
@@ -150,7 +260,9 @@ const SearchBar = () => {
           {suggestions.map((suggestion, index) => (
             <div
               key={suggestion.id}
-              className={`suggestion-item ${index === selectedIndex ? 'selected' : ''}`}
+              className={`suggestion-item ${
+                index === selectedIndex ? "selected" : ""
+              }`}
               onClick={() => handleSuggestionClick(suggestion)}
               onMouseEnter={() => setSelectedIndex(index)}
             >
@@ -162,9 +274,17 @@ const SearchBar = () => {
                   {isRTL ? suggestion.nameAr : suggestion.nameEn}
                 </span>
                 <span className="suggestion-category">
-                  {suggestion.category === 'mobile' ? (isRTL ? 'ألعاب موبايل' : 'Mobile Games') :
-                   suggestion.category === 'pc' ? (isRTL ? 'ألعاب كمبيوتر' : 'PC Games') :
-                   (isRTL ? 'بطاقات' : 'Gift Cards')}
+                  {suggestion.category === "mobile"
+                    ? isRTL
+                      ? "ألعاب موبايل"
+                      : "Mobile Games"
+                    : suggestion.category === "pc"
+                    ? isRTL
+                      ? "ألعاب كمبيوتر"
+                      : "PC Games"
+                    : isRTL
+                    ? "بطاقات"
+                    : "Gift Cards"}
                 </span>
               </div>
             </div>
@@ -172,7 +292,7 @@ const SearchBar = () => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default SearchBar 
+export default SearchBar;

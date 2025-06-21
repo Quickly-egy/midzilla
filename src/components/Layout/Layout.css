@@ -1,0 +1,23 @@
+.layout-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    flex: 1;
+    width: 100%;
+}
+
+/* Ensure the layout works well with the existing header styles */
+.layout-wrapper .header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Ensure proper spacing for page content */
+.home-page-content,
+.faq-page {
+    width: 100%;
+}

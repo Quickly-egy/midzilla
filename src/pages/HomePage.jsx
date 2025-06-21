@@ -15,7 +15,7 @@ const HomePage = () => {
   const { isRTL } = useLanguage()
 
   return (
-    <div className="home-page-wrapper" dir={isRTL ? 'rtl' : 'ltr'}>
+    <div className="home-page-content" dir={isRTL ? 'rtl' : 'ltr'}>
       <HeroSlider />
       <TrustIndicators />
       <FeaturedCategories />
