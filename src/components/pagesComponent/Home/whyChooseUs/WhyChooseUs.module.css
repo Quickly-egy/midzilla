@@ -1,0 +1,189 @@
+.section {
+  background-color: #26273d;
+  padding: 80px 0;
+  color: #ecf0f1;
+}
+
+.titleGroup {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--main-color);
+  margin-bottom: 10px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background-color: var(--main-color);
+  border-radius: 2px;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #bdc3c7;
+  max-width: 600px;
+}
+
+.featuresGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.featureCard {
+  background-color: #34495e;
+  padding: 30px;
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: calc(33.333% - 20px);
+  flex-grow: 1;
+  min-width: 300px;
+  position: relative;
+  overflow: hidden;
+  gap: 15px;
+}
+
+.featureCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background-color: var(--main-color);
+  transition: width 0.3s ease;
+}
+
+.featureCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.featureCard:hover::before {
+  width: 100%;
+}
+
+.cardText {
+  text-align: left;
+  flex-grow: 1;
+}
+
+.rtl .cardText {
+  text-align: right;
+}
+
+.cardTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+.cardDescription {
+  font-size: 1rem;
+  color: #bdc3c7;
+}
+
+.cardIconWrapper {
+  background-color: var(--main-color);
+  border-radius: 12px;
+  min-width: 80px;
+  height: 80px;
+  font-size: 2.5rem;
+  color: white;
+  box-shadow: 0 0 20px rgba(46, 204, 113, 0.5);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cardIconWrapper::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.1)
+  );
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.6s ease;
+}
+
+.featureCard:hover .cardIconWrapper {
+  animation: icon-pulse 1.2s ease-in-out infinite;
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 0 30px rgba(46, 204, 113, 0.8), 0 0 50px rgba(46, 204, 113, 0.4);
+  background: linear-gradient(135deg, var(--main-color), #27ae60);
+}
+
+.featureCard:hover .cardIconWrapper::before {
+  width: 100%;
+  height: 100%;
+  animation: ripple 1s ease-out infinite;
+}
+
+@keyframes icon-pulse {
+  0%,
+  100% {
+    border-radius: 12px;
+    transform: scale(1.1) rotate(5deg);
+  }
+
+  25% {
+    border-radius: 20px;
+    transform: scale(1.15) rotate(-2deg);
+  }
+
+  50% {
+    border-radius: 50%;
+    transform: scale(1.1) rotate(8deg);
+  }
+
+  75% {
+    border-radius: 25px;
+    transform: scale(1.12) rotate(-5deg);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 1200px) {
+  .featureCard {
+    width: calc(50% - 15px);
+    /* 2 cards per row */
+  }
+}
+@media (max-width: 768px) {
+  .featureCard {
+    width: 100%;
+    /* 1 card per row */
+  }
+}

@@ -1,0 +1,31 @@
+.authButtons {
+    gap: 10px;
+}
+
+.login,
+.signup {
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.login:hover,
+.signup:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+.login {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border-color: var(--nav-border);
+}
+
+.signup {
+    background-color: var(--accent-color);
+    color: var(--accent-text);
+}

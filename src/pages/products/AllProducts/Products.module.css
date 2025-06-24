@@ -1,0 +1,150 @@
+.productsPage {
+  min-height: 100vh;
+  background: var(--background);
+}
+
+.header {
+  background: linear-gradient(135deg, var(--main-color) 0%, var(--accent-color) 100%);
+  color: white;
+  padding: 40px 0;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 32px;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.sidebar {
+  position: relative;
+}
+
+.main {
+  min-height: 600px;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--nav-border);
+}
+
+.results {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+.sort {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sortSelect {
+  padding: 8px 12px;
+  border: 1px solid var(--nav-border);
+  border-radius: 6px;
+  background: var(--background);
+  color: var(--text-primary);
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.sortSelect:focus {
+  border-color: var(--main-color);
+}
+
+.sortSelect option {
+  background: var(--background);
+  color: var(--text-primary);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .content {
+    grid-template-columns: 240px 1fr;
+    gap: 24px;
+    padding: 0 16px;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 16px;
+  }
+  
+  .header {
+    padding: 30px 0;
+    margin-bottom: 30px;
+  }
+  
+  .title {
+    font-size: 1.8rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+    padding: 0 20px;
+  }
+  
+  .toolbar {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+  
+  .sort {
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 0 12px;
+  }
+  
+  .header {
+    padding: 24px 0;
+    margin-bottom: 24px;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+  }
+  
+  .subtitle {
+    font-size: 0.9rem;
+    padding: 0 16px;
+  }
+}

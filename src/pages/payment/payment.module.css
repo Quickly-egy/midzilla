@@ -1,0 +1,179 @@
+.payment_container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--background) 0%, var(--nav-bg) 100%);
+}
+
+.payment_layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.main_content {
+    display: flex;
+    flex-direction: column;
+    gap: 0; /* Components handle their own spacing */
+}
+
+.sidebar {
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+}
+
+.payment_actions {
+    margin-top: 40px;
+    text-align: center;
+    padding: 30px;
+    background-color: var(--nav-bg);
+    border-radius: 12px;
+    border: 1px solid var(--nav-border);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.place_order_btn {
+    padding: 18px 50px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent-text);
+    background: linear-gradient(135deg, var(--main-color) 0%, #55a22a 100%);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(98, 181, 47, 0.3);
+    min-width: 200px;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.place_order_btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #55a22a 0%, var(--main-color) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(98, 181, 47, 0.4);
+}
+
+.place_order_btn:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(98, 181, 47, 0.3);
+}
+
+.place_order_btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.processing {
+    background: linear-gradient(135deg, #666 0%, #999 100%) !important;
+}
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid transparent;
+    border-top: 2px solid var(--accent-text);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Enhanced responsive design */
+@media (max-width: 992px) {
+    .payment_layout {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .sidebar {
+        order: -1;
+        position: static;
+        margin-bottom: 30px;
+    }
+    
+    .payment_container {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .payment_container {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    
+    .payment_layout {
+        gap: 25px;
+        margin-bottom: 30px;
+    }
+    
+    .payment_actions {
+        padding: 20px;
+        margin-top: 30px;
+    }
+    
+    .place_order_btn {
+        padding: 15px 40px;
+        font-size: 1.2rem;
+        min-width: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .payment_actions {
+        padding: 15px;
+    }
+    
+    .place_order_btn {
+        padding: 12px 30px;
+        font-size: 1.1rem;
+        min-width: 160px;
+    }
+    
+    .payment_container {
+        background: var(--background); /* Remove gradient on very small screens */
+    }
+}
+
+/* Dark theme specific enhancements */
+[data-theme='dark'] .payment_container {
+    background: linear-gradient(135deg, var(--background) 0%, #1a1a1a 100%);
+}
+
+[data-theme='dark'] .place_order_btn {
+    box-shadow: 0 4px 15px rgba(98, 181, 47, 0.2);
+}
+
+[data-theme='dark'] .place_order_btn:hover:not(:disabled) {
+    box-shadow: 0 6px 20px rgba(98, 181, 47, 0.3);
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    .place_order_btn,
+    .spinner {
+        animation: none;
+        transition: none;
+    }
+    
+    .place_order_btn:hover:not(:disabled) {
+        transform: none;
+    }
+}
+
+/* Focus states for better accessibility */
+.place_order_btn:focus-visible {
+    outline: 3px solid rgba(98, 181, 47, 0.5);
+    outline-offset: 2px;
+}

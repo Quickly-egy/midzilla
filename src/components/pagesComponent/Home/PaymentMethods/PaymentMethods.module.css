@@ -1,0 +1,409 @@
+/* Section Styles */
+.paymentSection {
+  background: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+  padding: 80px 0;
+  min-height: 600px;
+}
+
+.paymentSection::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      circle at 70% 30%,
+      rgba(98, 181, 47, 0.08) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 30% 70%,
+      rgba(98, 181, 47, 0.06) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(98, 181, 47, 0.05) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Section Header */
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 48px;
+  position: relative;
+  z-index: 1;
+}
+
+.sectionTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--main-color);
+  font-family: "Cairo", sans-serif;
+  margin-bottom: 16px;
+  position: relative;
+  display: inline-block;
+}
+
+.sectionTitle::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--main-color), #81c784);
+  border-radius: 2px;
+}
+
+.sectionDescription {
+  font-size: 1.125rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.7;
+  margin: 0 auto;
+}
+
+/* Payment Container */
+.paymentContainer {
+  background: var(--card-background);
+  backdrop-filter: blur(12px) saturate(120%);
+  -webkit-backdrop-filter: blur(12px) saturate(120%);
+  border-radius: 24px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1), 0 8px 32px rgba(98, 181, 47, 0.08);
+  padding: 40px 32px;
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+}
+
+.containerHeader {
+  gap: 16px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.containerTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-color);
+  font-family: "Cairo", sans-serif;
+  text-align: center;
+}
+
+.headerIcon {
+  font-size: 2rem;
+  color: var(--main-color);
+  filter: drop-shadow(0 2px 8px rgba(98, 181, 47, 0.3));
+  transition: all 0.3s ease;
+}
+
+.headerIcon:hover {
+  transform: scale(1.1) rotate(10deg);
+  filter: drop-shadow(0 4px 12px rgba(98, 181, 47, 0.4));
+}
+
+/* Methods Grid */
+.methodsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 32px;
+}
+
+/* Method Cards */
+.methodCard {
+  background: var(--card-background);
+  backdrop-filter: blur(8px) saturate(110%);
+  -webkit-backdrop-filter: blur(8px) saturate(110%);
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  padding: 28px 24px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 20px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  will-change: transform, box-shadow;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.methodCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    var(--method-color, var(--main-color)) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 20px;
+}
+
+.methodCard:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15),
+    0 8px 24px var(--method-color, rgba(98, 181, 47, 0.15));
+  border-color: var(--method-color, var(--main-color));
+}
+
+.methodCard:hover::before {
+  opacity: 0.08;
+}
+
+.methodCard:hover .cardIcon {
+  transform: rotate(-8deg) scale(1.15);
+  color: var(--method-color, var(--main-color));
+}
+
+/* Card Icon */
+.cardIconWrapper {
+  background: var(--card-background);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border: 1px solid var(--border-color);
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.methodCard:hover .cardIconWrapper {
+  background: rgba(98, 181, 47, 0.1);
+  border-color: var(--method-color, var(--main-color));
+}
+
+.cardIcon {
+  font-size: 1.75rem;
+  color: var(--text-secondary);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Card Content */
+.cardContent {
+  position: relative;
+  z-index: 2;
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 8px;
+  font-family: "Cairo", sans-serif;
+  line-height: 1.4;
+  transition: color 0.3s ease;
+}
+
+.methodCard:hover .cardTitle {
+  color: var(--method-color, var(--main-color));
+}
+
+.cardDescription {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* RTL Support */
+.rtl .methodCard {
+  direction: rtl;
+  text-align: right;
+}
+
+.rtl .containerHeader {
+  flex-direction: row-reverse;
+}
+
+.rtl .sectionHeader {
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .paymentSection {
+    padding: 60px 0;
+  }
+
+  .paymentContainer {
+    padding: 28px 20px;
+    border-radius: 16px;
+  }
+
+  .methodsGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .methodCard {
+    padding: 20px 16px;
+    gap: 16px;
+  }
+
+  .cardIconWrapper {
+    width: 56px;
+    height: 56px;
+    padding: 12px;
+  }
+
+  .cardIcon {
+    font-size: 1.5rem;
+  }
+
+  .containerTitle {
+    font-size: 1.5rem;
+  }
+
+  .headerIcon {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .containerHeader {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .sectionTitle {
+    font-size: 1.75rem;
+  }
+
+  .sectionDescription {
+    font-size: 1rem;
+  }
+}
+
+/* Animation Delays for Staggered Effect */
+.methodCard:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.methodCard:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.methodCard:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.methodCard:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+/* Fade in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.methodCard {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Light mode specific adjustments */
+@media (prefers-color-scheme: light) {
+  .paymentContainer {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08),
+      0 8px 32px rgba(98, 181, 47, 0.06);
+  }
+
+  .methodCard {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+
+  .methodCard:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12),
+      0 8px 24px var(--method-color, rgba(98, 181, 47, 0.12));
+  }
+}
+
+/* Dark mode specific adjustments */
+@media (prefers-color-scheme: dark) {
+  .paymentContainer {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25),
+      0 8px 32px rgba(98, 181, 47, 0.1);
+  }
+
+  .methodCard {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .methodCard:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+      0 8px 24px var(--method-color, rgba(98, 181, 47, 0.2));
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .methodCard {
+    border-width: 2px;
+  }
+
+  .cardTitle {
+    font-weight: 800;
+  }
+
+  .sectionTitle {
+    font-weight: 900;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .methodCard {
+    transition: none;
+    animation: none;
+    opacity: 1;
+  }
+
+  .methodCard:hover {
+    transform: none;
+  }
+
+  .cardIcon {
+    transition: none;
+  }
+
+  .methodCard:hover .cardIcon {
+    transform: none;
+  }
+
+  .headerIcon {
+    transition: none;
+  }
+
+  .headerIcon:hover {
+    transform: none;
+  }
+}

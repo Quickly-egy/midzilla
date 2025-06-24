@@ -1,0 +1,35 @@
+.ourMissionWrapper {
+  background-color: var(--nav-bg);
+}
+
+.ourMission {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 50px;
+}
+
+.missionContent p {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.missionImage {
+  order: -1;
+}
+
+.missionImage img {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 992px) {
+  .ourMission {
+    grid-template-columns: 1fr;
+  }
+  .missionImage {
+    order: 0;
+  }
+} 

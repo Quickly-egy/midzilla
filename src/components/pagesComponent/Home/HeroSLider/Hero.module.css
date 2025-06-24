@@ -1,0 +1,82 @@
+.heroContainer {
+  height: 60vh;
+  width: 100%;
+  position: relative;
+  background: #000;
+}
+
+.swiper {
+  height: 100%;
+}
+
+.slide {
+  position: relative;
+}
+
+.slideImage {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(0, 50, 0, 0.9),
+    rgba(0, 50, 0, 0.5),
+    rgba(0, 50, 0, 0.9)
+  );
+  z-index: 1;
+}
+
+.slideContent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  justify-content: flex-end;
+  padding-bottom: 50px;
+}
+
+.slideTitle {
+  color: #000;
+  font-size: 5rem;
+  font-family: "Cinzel", serif;
+  /* A font that looks similar to the image */
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.ctaButton {
+  background-color: var(--main-color);
+  color: white;
+  padding: 15px 35px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  gap: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
+}
+
+.ctaButton:hover {
+  transform: scale(1.05);
+  background-color: #4cae4c;
+}

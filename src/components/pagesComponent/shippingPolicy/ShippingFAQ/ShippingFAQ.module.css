@@ -1,0 +1,12 @@
+.faqWrapper {
+  background: var(--background);
+}
+
+.header {
+  text-align: center;
+}
+
+.faqList {
+  max-width: 900px;
+  margin: 0 auto;
+} 

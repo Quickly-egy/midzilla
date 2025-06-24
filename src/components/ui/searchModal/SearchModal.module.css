@@ -1,0 +1,133 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal {
+    position: absolute;
+    z-index: 1000;
+    background: var(--nav-bg);
+    border: 1px solid var(--nav-border);
+    border-radius: 12px;
+    padding: 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.modal::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.modal::-webkit-scrollbar-thumb {
+    background-color: var(--accent-color);
+    border-radius: 20px;
+    border: 2px solid var(--nav-bg);
+}
+
+.closeButton {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: var(--text-secondary);
+}
+
+.searchBox {
+    width: 100%;
+    border: 1px solid var(--nav-border);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.searchInput {
+    flex-grow: 1;
+    padding: 12px;
+    border: none;
+    background: var(--button-bg);
+    color: var(--text-primary);
+    font-size: 16px;
+    outline: none;
+}
+
+.searchButton {
+    padding: 12px;
+    border: none;
+    background: var(--accent-color);
+    color: var(--accent-text);
+    cursor: pointer;
+}
+
+.results {
+    width: 100%;
+    min-height: 200px;
+    text-align: center;
+    padding-top: 20px;
+    color: var(--text-secondary);
+}
+
+.resultsList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.item {
+    background: var(--button-bg);
+    padding: 15px;
+    border-radius: 8px;
+    gap: 15px;
+    align-items: flex-start;
+    transition: background-color 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.item:hover {
+    background-color: var(--nav-bg);
+}
+
+.itemImage {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.itemDetails {
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.itemTitle {
+    font-size: 18px;
+    color: var(--text-primary);
+}
+
+.itemAuthor {
+    font-size: 14px;
+    color: var(--accent-color);
+}
+
+.itemDesc {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.noResults {
+    color: var(--text-secondary);
+    padding: 50px;
+    text-align: center;
+    gap: 10px;
+}

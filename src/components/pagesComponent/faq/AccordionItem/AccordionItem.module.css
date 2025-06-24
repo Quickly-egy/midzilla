@@ -1,0 +1,50 @@
+.accordionItem {
+  border-bottom: 1px solid var(--nav-border);
+}
+
+.accordionHeader {
+  width: 100%;
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.question {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.accordionHeader:hover .question {
+  color: var(--main-color);
+}
+
+.icon {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--main-color);
+}
+
+.accordionContent {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out, padding 0.4s ease;
+}
+
+.open .accordionContent {
+  max-height: 500px; /* Adjust as needed */
+  padding-bottom: 20px;
+}
+
+.answer {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+  padding-right: 20px; /* To avoid text bumping into the icon space */
+} 

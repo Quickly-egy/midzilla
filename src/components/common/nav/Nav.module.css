@@ -1,0 +1,22 @@
+.header {
+    background-color: var(--nav-bg);
+    padding: 15px 30px;
+    color: var(--text-primary);
+    font-family: Arial, sans-serif;
+    border-bottom: 1px solid var(--nav-border);
+}
+
+.left,
+.center,
+.right {
+    display: flex;
+    align-items: center;
+}
+
+.center {
+    flex-grow: 1;
+}
+
+.right {
+    gap: 10px;
+}

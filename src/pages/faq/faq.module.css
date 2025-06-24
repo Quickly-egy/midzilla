@@ -1,0 +1,29 @@
+.faqPage {
+  background-color: var(--background);
+  min-height: 100vh;
+}
+
+.mainContent {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 30px;
+  align-items: flex-start;
+  padding-bottom: 40px;
+}
+
+.sidebarWrapper {
+  grid-column: 1 / 2;
+}
+
+.faqListWrapper {
+  grid-column: 2 / 3;
+}
+
+@media (max-width: 992px) {
+  .mainContent {
+    grid-template-columns: 1fr;
+  }
+  .sidebarWrapper, .faqListWrapper {
+    grid-column: 1 / -1;
+  }
+}

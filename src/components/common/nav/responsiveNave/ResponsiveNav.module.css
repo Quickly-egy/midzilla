@@ -1,0 +1,258 @@
+.header {
+    background-color: var(--nav-bg);
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--nav-border);
+    position: relative;
+    z-index: 1000;
+}
+
+/* Desktop Navigation */
+.desktopNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+}
+
+.left,
+.center,
+.right {
+    display: flex;
+    align-items: center;
+}
+
+.center {
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.right {
+    gap: 10px;
+}
+
+/* Mobile Navigation */
+.mobileNav {
+    display: none;
+}
+
+.mobileHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    position: relative;
+}
+
+.menuButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.menuButton:hover {
+    background-color: var(--button-bg);
+}
+
+/* Hamburger Menu Icon */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    width: 24px;
+    height: 18px;
+    position: relative;
+}
+
+.hamburger span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: var(--text-primary);
+    border-radius: 1px;
+    transition: all 0.3s ease;
+    position: absolute;
+}
+
+.hamburger span:nth-child(1) {
+    top: 0;
+}
+
+.hamburger span:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.hamburger span:nth-child(3) {
+    bottom: 0;
+}
+
+/* Hamburger Animation */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 50%;
+    transform-origin: center;
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg);
+    bottom: 50%;
+    transform-origin: center;
+}
+
+/* Mobile Search */
+.mobileSearch {
+    flex: 1;
+    max-width: 300px;
+    margin: 0 15px;
+}
+
+/* Menu Search (for small screens) */
+.menuSearch {
+    display: none;
+    margin-bottom: 20px;
+}
+
+/* Mobile Logo */
+.mobileLogo {
+    flex-shrink: 0;
+}
+
+/* Mobile Menu */
+.mobileMenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--nav-bg);
+    border-bottom: 1px solid var(--nav-border);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.mobileMenu.open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobileMenuContent {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mobileActions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--nav-border);
+}
+
+/* Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+}
+
+/* RTL Support */
+.rtl {
+    direction: rtl;
+}
+
+.rtl .mobileHeader {
+    flex-direction: row-reverse;
+}
+
+.rtl .mobileActions {
+    flex-direction: row-reverse;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1300px) {
+    .desktopNav {
+        display: none;
+    }
+
+    .mobileNav {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    .mobileHeader {
+        padding: 10px 15px;
+    }
+
+    .mobileSearch {
+        max-width: 250px;
+        margin: 0 10px;
+    }
+
+    .mobileMenuContent {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .mobileHeader {
+        padding: 8px 12px;
+    }
+
+    .mobileSearch {
+        max-width: 200px;
+        margin: 0 8px;
+    }
+
+    .mobileActions {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 460px) {
+
+    /* Hide search input from mobile header */
+    .mobileSearch {
+        display: none;
+    }
+
+    /* Show search input in menu */
+    .menuSearch {
+        display: block;
+    }
+
+    /* Center logo when search is hidden */
+    .mobileHeader {
+        justify-content: space-between;
+    }
+
+    .mobileLogo {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        margin-right: 60px;
+        /* Account for menu button width */
+    }
+
+    /* RTL adjustments for small screens */
+    .rtl .mobileLogo {
+        margin-right: 0;
+        margin-left: 60px;
+    }
+}

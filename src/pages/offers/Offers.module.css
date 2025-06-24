@@ -1,0 +1,812 @@
+/* Offers Page Styles */
+.offersPage {
+    min-height: 100vh;
+    background: var(--bg-primary);
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Hero Section */
+.heroSection {
+    background: linear-gradient(135deg,
+            rgba(var(--main-color-rgb), 0.1) 0%,
+            rgba(var(--main-color-rgb), 0.05) 50%,
+            transparent 100%);
+    position: relative;
+    padding: 80px 0 60px;
+}
+
+.heroSection::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 20%,
+            rgba(var(--main-color-rgb), 0.15) 0%,
+            transparent 50%);
+    pointer-events: none;
+}
+
+.heroContent {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.heroText {
+    max-width: 600px;
+}
+
+.heroTitle {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    background: linear-gradient(135deg, var(--main-color), #4cae4c, var(--main-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(var(--main-color-rgb), 0.3);
+    animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+    from {
+        text-shadow: 0 0 30px rgba(var(--main-color-rgb), 0.3);
+    }
+
+    to {
+        text-shadow: 0 0 40px rgba(var(--main-color-rgb), 0.5);
+    }
+}
+
+.heroSubtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.heroStats {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.statNumber {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--main-color);
+    text-shadow: 0 0 20px rgba(var(--main-color-rgb), 0.4);
+    margin-bottom: 5px;
+}
+
+.statLabel {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.heroImage {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.floatingCard {
+    width: 100%;
+    height: 100%;
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    border: 2px solid var(--main-color);
+    border-radius: 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: float 6s ease-in-out infinite;
+    box-shadow:
+        0 0 30px rgba(var(--main-color-rgb), 0.4),
+        0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(2deg);
+    }
+}
+
+.cardGlow {
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(45deg, var(--main-color), transparent, var(--main-color));
+    border-radius: 20px;
+    z-index: -1;
+    animation: borderRotate 4s linear infinite;
+}
+
+@keyframes borderRotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.discountBadge {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--accent-text);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Filters Section */
+.filtersSection {
+    background: rgba(var(--glass-bg-rgb), 0.3);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid var(--glass-border);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.filtersContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.categoriesFilter,
+.sortFilter {
+    flex: 1;
+    min-width: 250px;
+}
+
+.filterTitle {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 15px;
+}
+
+.categoryButtons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.categoryButton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border: 2px solid var(--glass-border);
+    border-radius: 12px;
+    background: var(--glass-bg);
+    color: var(--text-primary);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.categoryButton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(var(--main-color-rgb), 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.categoryButton:hover {
+    border-color: var(--main-color);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(var(--main-color-rgb), 0.2);
+}
+
+.categoryButton:hover::before {
+    left: 100%;
+}
+
+.categoryButton.active {
+    border-color: var(--main-color);
+    background: rgba(var(--main-color-rgb), 0.1);
+    box-shadow: 0 0 20px rgba(var(--main-color-rgb), 0.3);
+}
+
+.categoryIcon {
+    font-size: 1.2rem;
+}
+
+.categoryName {
+    font-size: 0.95rem;
+}
+
+.sortSelect {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid var(--glass-border);
+    border-radius: 10px;
+    background: var(--glass-bg);
+    color: var(--text-primary);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.sortSelect:focus {
+    outline: none;
+    border-color: var(--main-color);
+    box-shadow: 0 0 0 3px rgba(var(--main-color-rgb), 0.2);
+}
+
+/* Offers Section */
+.offersSection {
+    background: var(--bg-primary);
+}
+
+.offersGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.offerCard {
+    background: var(--glass-bg);
+    border: 2px solid var(--glass-border);
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.offerCard:hover {
+    transform: translateY(-8px);
+    border-color: var(--main-color);
+    box-shadow:
+        0 0 30px rgba(var(--main-color-rgb), 0.3),
+        0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+.offerCard .cardGlow {
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, var(--main-color), transparent, var(--main-color));
+    border-radius: 20px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.offerCard:hover .cardGlow {
+    opacity: 0.3;
+    animation: borderRotate 3s linear infinite;
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px 20px 0;
+    position: relative;
+    z-index: 2;
+}
+
+.badgeContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.offerBadge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.offerBadge.hotdeal {
+    background: linear-gradient(135deg, #ff4757, #ff3742);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
+}
+
+.offerBadge.limited {
+    background: linear-gradient(135deg, #ffa502, #ff6348);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 165, 2, 0.3);
+}
+
+.offerBadge.new {
+    background: linear-gradient(135deg, var(--main-color), #4cae4c);
+    color: white;
+    box-shadow: 0 4px 15px rgba(var(--main-color-rgb), 0.3);
+}
+
+.offerBadge.bestseller {
+    background: linear-gradient(135deg, #8e44ad, #9b59b6);
+    color: white;
+    box-shadow: 0 4px 15px rgba(142, 68, 173, 0.3);
+}
+
+.offerBadge.flashsale {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+    animation: pulse 2s infinite;
+}
+
+.offerBadge.premium {
+    background: linear-gradient(135deg, #f39c12, #d68910);
+    color: white;
+    box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.discountPercentage {
+    background: rgba(var(--main-color-rgb), 0.9);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(var(--main-color-rgb), 0.3);
+}
+
+.timeLeft {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 8px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    border: 1px solid var(--glass-border);
+}
+
+.cardImage {
+    position: relative;
+    height: 200px;
+    margin: 15px 20px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.cardImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.offerCard:hover .cardImage img {
+    transform: scale(1.05);
+}
+
+.imageOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+            rgba(var(--main-color-rgb), 0.1) 0%,
+            transparent 50%,
+            rgba(var(--main-color-rgb), 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.offerCard:hover .imageOverlay {
+    opacity: 1;
+}
+
+.cardContent {
+    padding: 0 20px 20px;
+}
+
+.offerTitle {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.offerDescription {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.priceContainer {
+    margin-bottom: 20px;
+}
+
+.prices {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 5px;
+}
+
+.originalPrice {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+.discountPrice {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--main-color);
+    text-shadow: 0 0 10px rgba(var(--main-color-rgb), 0.3);
+}
+
+.savings {
+    font-size: 0.85rem;
+    color: var(--main-color);
+    font-weight: 600;
+    background: rgba(var(--main-color-rgb), 0.1);
+    padding: 4px 8px;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+.claimButton {
+    width: 100%;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--main-color), #4cae4c);
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(var(--main-color-rgb), 0.3);
+}
+
+.claimButton::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.claimButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(var(--main-color-rgb), 0.4);
+}
+
+.claimButton:hover::before {
+    left: 100%;
+}
+
+.buttonIcon {
+    font-size: 1.1rem;
+}
+
+/* CTA Section */
+.ctaSection {
+    background: linear-gradient(135deg,
+            rgba(var(--main-color-rgb), 0.05) 0%,
+            transparent 50%,
+            rgba(var(--main-color-rgb), 0.05) 100%);
+            margin: 30px 0;
+}
+
+.ctaCard {
+    background: var(--glass-bg);
+    border: 2px solid var(--glass-border);
+    border-radius: 25px;
+    padding: 60px 40px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+.ctaCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 70% 30%,
+            rgba(var(--main-color-rgb), 0.1) 0%,
+            transparent 70%);
+    pointer-events: none;
+}
+
+.ctaContent {
+    position: relative;
+    z-index: 2;
+}
+
+.ctaTitle {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.ctaDescription {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.ctaActions {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.subscribeButton,
+.browseButton {
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.subscribeButton {
+    background: linear-gradient(135deg, var(--main-color), #4cae4c);
+    color: white;
+    box-shadow: 0 4px 15px rgba(var(--main-color-rgb), 0.3);
+}
+
+.subscribeButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(var(--main-color-rgb), 0.4);
+}
+
+.browseButton {
+    background: transparent;
+    color: var(--text-primary);
+    border-color: var(--glass-border);
+}
+
+.browseButton:hover {
+    border-color: var(--main-color);
+    background: rgba(var(--main-color-rgb), 0.1);
+    transform: translateY(-2px);
+}
+
+.ctaVisual {
+    position: relative;
+    width: 150px;
+    height: 150px;
+}
+
+.floatingElements {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.floatingElement {
+    position: absolute;
+    font-size: 2rem;
+    animation: floatElement 4s ease-in-out infinite;
+}
+
+.floatingElement:nth-child(1) {
+    top: 20%;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.floatingElement:nth-child(2) {
+    top: 60%;
+    right: 20%;
+    animation-delay: 1.3s;
+}
+
+.floatingElement:nth-child(3) {
+    bottom: 20%;
+    left: 50%;
+    animation-delay: 2.6s;
+}
+
+@keyframes floatElement {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg) scale(1);
+    }
+
+    33% {
+        transform: translateY(-15px) rotate(5deg) scale(1.1);
+    }
+
+    66% {
+        transform: translateY(10px) rotate(-3deg) scale(0.9);
+    }
+}
+
+/* RTL Support */
+[dir="rtl"] .heroContent {
+    grid-template-columns: auto 1fr;
+}
+
+[dir="rtl"] .categoryButton {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .prices {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .claimButton {
+    flex-direction: row-reverse;
+}
+
+[dir="rtl"] .ctaCard {
+    grid-template-columns: auto 1fr;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .heroContent {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .heroStats {
+        justify-content: center;
+    }
+
+    .filtersContainer {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .offersGrid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    .ctaCard {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: 40px 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .heroSection {
+        padding: 60px 0 40px;
+    }
+
+    .heroTitle {
+        font-size: 2.5rem;
+    }
+
+    .heroStats {
+        gap: 25px;
+    }
+
+    .statNumber {
+        font-size: 2rem;
+    }
+
+    .categoryButtons {
+        justify-content: center;
+    }
+
+    .categoryButton {
+        flex: 1;
+        min-width: 120px;
+        justify-content: center;
+    }
+
+    .offersGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .ctaActions {
+        justify-content: center;
+    }
+
+    .ctaTitle {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .heroTitle {
+        font-size: 2rem;
+    }
+
+    .heroStats {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .categoryButtons {
+        flex-direction: column;
+    }
+
+    .categoryButton {
+        width: 100%;
+    }
+
+    .ctaCard {
+        padding: 30px 20px;
+    }
+
+    .ctaActions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .subscribeButton,
+    .browseButton {
+        width: 100%;
+        justify-content: center;
+    }
+}

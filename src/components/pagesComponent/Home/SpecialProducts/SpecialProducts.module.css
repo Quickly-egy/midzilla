@@ -1,0 +1,220 @@
+.section {
+  background-color: #141d30;
+  padding: 80px 0;
+  color: #ecf0f1;
+  font-family: "Cairo", sans-serif;
+}
+
+.rtl {
+  direction: rtl;
+}
+
+.titleGroup {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--main-color);
+  margin-bottom: 15px;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background-color: var(--main-color);
+  border-radius: 2px;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #a0aec0;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  justify-items: center;
+}
+
+.productCard {
+  background-color: #1d293b;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  width: 100%;
+  max-width: 350px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 1px solid #2a3b52;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.productCard:hover {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(98, 181, 47, 0.2);
+  border-color: var(--main-color);
+}
+
+.discountBadge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: #e53e3e;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  z-index: 2;
+  box-shadow: 0 4px 10px rgba(229, 62, 62, 0.4);
+}
+
+.rtl .discountBadge {
+  left: auto;
+  right: 20px;
+}
+
+.imagePlaceholder {
+  background-color: #2a3b52;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #8093b5;
+  border-bottom: 1px solid #3c4f6d;
+  padding: 20px;
+  text-align: center;
+  border: 2px dashed #3c4f6d;
+  margin: 15px;
+  border-radius: 12px;
+}
+
+.imagePlaceholder .imageIcon {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  opacity: 0.6;
+}
+
+.imagePlaceholder p {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.imagePlaceholder span {
+  font-size: 0.8rem;
+  font-family: "Fira Code", monospace;
+  background-color: #162033;
+  padding: 3px 8px;
+  border-radius: 5px;
+}
+
+.cardContent {
+  padding: 0 30px 30px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.productCategory {
+  color: var(--main-color);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.productTitle {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 15px;
+  min-height: 40px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 15px;
+  color: #a0aec0;
+}
+
+.ratingText {
+  font-size: 0.9rem;
+  margin-left: 8px;
+}
+
+.rtl .ratingText {
+  margin-left: 0;
+  margin-right: 8px;
+}
+
+.priceContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.currentPrice {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--main-color);
+}
+
+.originalPrice {
+  font-size: 1.2rem;
+  color: #a0aec0;
+  text-decoration: line-through;
+}
+
+.buyButton {
+  background-color: var(--main-color);
+  color: white;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: auto; /* Pushes button to the bottom */
+}
+
+.buyButton:hover {
+  background-color: #4cae4c;
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(98, 181, 47, 0.3);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 20px;
+  }
+  .title {
+    font-size: 2rem;
+  }
+  .productsGrid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}

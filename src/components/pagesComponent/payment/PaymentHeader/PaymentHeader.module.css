@@ -1,0 +1,15 @@
+.header {
+  text-align: center;
+  background-color: var(--nav-bg);
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.header h1 {
+  margin-bottom: 15px;
+}
+
+.header p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+} 

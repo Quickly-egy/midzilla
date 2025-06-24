@@ -1,0 +1,32 @@
+.contactPage {
+  background-color: var(--background);
+  min-height: 100vh;
+}
+
+.mainContent {
+  padding-bottom: 40px;
+}
+
+.formAndMap {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.formWrapper {
+  grid-column: 1 / 2;
+}
+
+.mapWrapper {
+  grid-column: 2 / 3;
+}
+
+@media (max-width: 992px) {
+  .formAndMap {
+    grid-template-columns: 1fr;
+  }
+   .formWrapper, .mapWrapper {
+    grid-column: 1 / -1;
+  }
+}
