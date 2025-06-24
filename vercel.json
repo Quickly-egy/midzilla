@@ -21,7 +21,8 @@
   ],
   "build": {
     "env": {
-      "NODE_OPTIONS": "--max-old-space-size=4096"
+      "NODE_OPTIONS": "--max-old-space-size=7168",
+      "VITE_CLI_MEMORY_LIMIT": "7168"
     }
   }
 }

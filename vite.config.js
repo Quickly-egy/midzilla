@@ -15,7 +15,9 @@ export default defineConfig({
     target: "esnext",
     minify: "esbuild",
     sourcemap: false,
-    chunkSizeWarningLimit: 1000,
+    chunkSizeWarningLimit: 1500,
+    cssCodeSplit: true,
+    reportCompressedSize: false,
     rollupOptions: {
       output: {
         manualChunks: {
@@ -41,5 +43,15 @@ export default defineConfig({
   // Reduce bundle size
   esbuild: {
     drop: ["console", "debugger"],
+    logLevel: "error",
+    minifyIdentifiers: true,
+    minifySyntax: true,
+    minifyWhitespace: true,
+    treeShaking: true,
+  },
+  // Performance optimizations
+  optimizeDeps: {
+    include: ["react", "react-dom", "react-router-dom", "framer-motion", "react-icons", "lottie-react", "swiper"],
+    exclude: [],
   },
 });
